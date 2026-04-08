@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <title>Data & Analytics | Stackly IT Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #faf8f5;
+            color: #1a1a2e;
+            line-height: 1.5;
+            overflow-x: hidden;
+            width: 100%;
+            padding-top: 100px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+        }
+
+        .section {
+            padding: 90px 0;
+            overflow-x: hidden;
+        }
+
+        .section-light {
+            background: #ffffff;
+        }
+        .section-warm {
+            background: #faf8f5;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+        }
+
+        .badge {
+            background: #e0e7ff;
+            color: #4f46e5;
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            background: #4f46e5;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #4f46e5;
+            color: white;
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #6366f1;
+            transform: translateY(-3px);
+            gap: 15px;
+            box-shadow: 0 8px 20px rgba(79,70,229,0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #cbd5e1;
+            color: #1a1a2e;
+        }
+
+        .btn-outline:hover {
+            background: #f8fafc;
+            border-color: #4f46e5;
+            transform: translateY(-3px);
+        }
+
+        /* SECTION 1: HERO */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            color: white;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: #faf8f5;
+            clip-path: polygon(0 0, 100% 100%, 100% 0, 0 100%);
+        }
+        .hero .badge { background: rgba(79,70,229,0.3); color: #a5b4fc; }
+
+        /* SECTION 2: COUNTUP GRID */
+        .countup-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+        .countup-item {
+            padding: 30px 20px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+        }
+        .countup-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(79,70,229,0.1);
+        }
+        .countup-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #4f46e5;
+        }
+
+        /* SECTION 3: TABS LAYOUT */
+        .tabs-container {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            border: 1px solid #eef2ff;
+            transition: all 0.3s ease;
+        }
+        .tabs-container:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .tabs-header {
+            display: flex;
+            border-bottom: 1px solid #eef2ff;
+        }
+        .tab-btn {
+            flex: 1;
+            padding: 18px;
+            background: none;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .tab-btn:hover {
+            background: #f0f4ff;
+        }
+        .tab-btn.active {
+            background: #4f46e5;
+            color: white;
+        }
+        .tab-content {
+            padding: 40px;
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .tab-img {
+            width: 100%;
+            border-radius: 20px;
+            margin-top: 20px;
+        }
+
+        /* SECTION 4: CARD STACK */
+        .card-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .stack-card {
+            background: white;
+            padding: 25px 30px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border: 1px solid #eef2ff;
+            transition: all 0.3s ease;
+        }
+        .stack-card:hover {
+            transform: translateX(15px);
+            border-color: #c7d2fe;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        .stack-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        /* SECTION 5: RADIAL PROGRESS */
+        .radial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+        .radial-item {
+            background: white;
+            padding: 30px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        .radial-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(79,70,229,0.1);
+        }
+        .radial-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: conic-gradient(#4f46e5 0deg, #e0e7ff 0deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .radial-circle:hover {
+            transform: scale(1.05);
+        }
+        .radial-inner {
+            width: 90px;
+            height: 90px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #4f46e5;
+        }
+
+        /* SECTION 6: ZIGZAG CONTENT */
+        .zigzag-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        .zigzag-item {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        .zigzag-item.reverse {
+            flex-direction: row-reverse;
+        }
+        .zigzag-img {
+            width: 50%;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        .zigzag-img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        /* SECTION 7: PRICING SWITCH */
+        .pricing-switch {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .switch-btn {
+            background: #e0e7ff;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .switch-btn:hover {
+            background: #4f46e5;
+            color: white;
+            transform: translateY(-2px);
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .pricing-card {
+            background: white;
+            padding: 30px;
+            border-radius: 30px;
+            text-align: center;
+            border: 1px solid #eef2ff;
+            transition: all 0.3s ease;
+        }
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(79,70,229,0.1);
+            border-color: #c7d2fe;
+        }
+        .pricing-card.featured {
+            border: 2px solid #4f46e5;
+            background: linear-gradient(135deg, #fff, #f5f3ff);
+        }
+        .pricing-img {
+            width: 60px;
+            margin: 0 auto 20px;
+        }
+
+        /* SECTION 8: TESTIMONIAL SLIDER */
+        .testimonial-slider {
+            background: #e0e7ff;
+            border-radius: 50px;
+            padding: 50px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .testimonial-slider:hover {
+            transform: scale(1.01);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+        }
+
+        /* SECTION 9: LOGO WALL */
+        .logo-wall {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+        }
+        .logo-wall-item {
+            background: white;
+            padding: 20px 40px;
+            border-radius: 60px;
+            border: 1px solid #eef2ff;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .logo-wall-item:hover {
+            transform: translateY(-5px) scale(1.05);
+            border-color: #c7d2fe;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        /* SECTION 10: CTA BLOCK */
+        .cta-block {
+            background: linear-gradient(135deg, #0f172a, #1e1b4b);
+            padding: 60px;
+            border-radius: 50px;
+            text-align: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .cta-block:hover {
+            transform: scale(1.01);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        /* Animations */
+        .animate-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: all 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .animate-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: all 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .animate-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .animate-left.show, .animate-right.show, .animate-up.show {
+            opacity: 1;
+            transform: translateX(0);
+            transform: translateY(0);
+        }
+
+        .counter {
+            display: inline-block;
+        }
+
+        @media (max-width: 900px) {
+            .countup-grid, .radial-grid, .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            .zigzag-item, .zigzag-item.reverse {
+                flex-direction: column;
+            }
+            .zigzag-img { width: 100%; }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
+            .section { padding: 60px 0; }
+            .tabs-header { flex-direction: column; }
+            .cta-block { padding: 40px 20px; }
+            .card-stack { max-width: 100%; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 16px; }
+            .testimonial-slider { padding: 30px; border-radius: 30px; }
+            .logo-wall-item { padding: 15px 25px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER PLACEHOLDER - Header will load here -->
+<div id="header-placeholder"></div>
+
+    <!-- SECTION 1: HERO -->
+    <div class="hero">
+        <div class="container">
+            <div class="badge animate-up">Data & Analytics</div>
+            <h1 class="animate-left">Turn Data Into<br>Business Intelligence</h1>
+            <p class="animate-left" style="font-size: 1.2rem; max-width: 550px; margin: 25px 0 35px;">Real-time analytics, AI-powered insights, and enterprise data platforms that drive smarter decisions.</p>
+            <a href="404.html" class="btn animate-up">Start Your Journey →</a>
+        </div>
+    </div>
+
+    <!-- SECTION 2: COUNTUP GRID -->
+    <div class="section section-light">
+        <div class="container">
+            <div class="countup-grid">
+                <div class="countup-item animate-up"><div class="countup-number"><span class="counter" data-target="500">0</span>+</div><p>Data Sources Connected</p><img src="it5.webp" style="width:100%; border-radius:20px; margin-top:15px;"></div>
+                <div class="countup-item animate-up"><div class="countup-number"><span class="counter" data-target="10">0</span>B+</div><p>Daily Records Processed</p><img src="it4.webp" style="width:100%; border-radius:20px; margin-top:15px;"></div>
+                <div class="countup-item animate-up"><div class="countup-number">&lt;1<span style="font-size:1rem;">s</span></div><p>Query Response Time</p><img src="it3.webp" style="width:100%; border-radius:20px; margin-top:15px;"></div>
+                <div class="countup-item animate-up"><div class="countup-number">99.9<span style="font-size:1rem;">%</span></div><p>Data Accuracy</p><img src="it2.webp" style="width:100%; border-radius:20px; margin-top:15px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 3: TABS LAYOUT -->
+    <div class="section section-warm">
+        <div class="container">
+            <div class="badge animate-left">Analytics Capabilities</div>
+            <h2 class="animate-left">Powerful Features</h2>
+            <div class="tabs-container animate-up">
+                <div class="tabs-header">
+                    <button class="tab-btn active" data-tab="tab1">Predictive Analytics</button>
+                    <button class="tab-btn" data-tab="tab2">Real-Time Dashboards</button>
+                    <button class="tab-btn" data-tab="tab3">AI/ML Models</button>
+                </div>
+                <div class="tab-content active" id="tab1"><i class="fas fa-chart-line" style="font-size:2rem; color:#4f46e5;"></i><h3>Predictive Analytics</h3><p style="color:#666; margin:15px 0;">Forecast trends with 95% accuracy using machine learning algorithms that learn from your historical data.</p><a href="404.html" style="color:#4f46e5;">Learn More →</a><img src="it10.webp" class="tab-img"></div>
+                <div class="tab-content" id="tab2"><i class="fas fa-tachometer-alt" style="font-size:2rem; color:#4f46e5;"></i><h3>Real-Time Dashboards</h3><p style="color:#666; margin:15px 0;">Live insights at your fingertips with interactive visualizations that update in real-time.</p><a href="404.html" style="color:#4f46e5;">Learn More →</a><img src="it9.webp" class="tab-img"></div>
+                <div class="tab-content" id="tab3"><i class="fas fa-brain" style="font-size:2rem; color:#4f46e5;"></i><h3>AI/ML Models</h3><p style="color:#666; margin:15px 0;">Custom machine learning models trained on your business data for unique insights.</p><a href="404.html" style="color:#4f46e5;">Learn More →</a><img src="it8.webp" class="tab-img"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 4: CARD STACK -->
+    <div class="section section-light">
+        <div class="container">
+            <div class="badge animate-up">Data Sources</div>
+            <h2 class="animate-up">Connect Everything</h2>
+            <div class="card-stack">
+                <div class="stack-card animate-left"><img src="it15.webp" class="stack-img"><div><strong>Databases</strong><p style="color:#666;">PostgreSQL, MySQL, MongoDB, Snowflake</p></div><a href="404.html" style="margin-left:auto; color:#4f46e5;">→</a></div>
+                <div class="stack-card animate-right"><img src="it14.webp" class="stack-img"><div><strong>Cloud Apps</strong><p style="color:#666;">Salesforce, Marketo, Zendesk, HubSpot</p></div><a href="404.html" style="margin-left:auto; color:#4f46e5;">→</a></div>
+                <div class="stack-card animate-left"><img src="it13.webp" class="stack-img"><div><strong>Files & APIs</strong><p style="color:#666;">CSV, JSON, REST APIs, Kafka streams</p></div><a href="404.html" style="margin-left:auto; color:#4f46e5;">→</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 5: RADIAL PROGRESS -->
+    <div class="section section-warm">
+        <div class="container">
+            <div class="badge animate-up">Performance Metrics</div>
+            <h2 class="animate-up">At a Glance</h2>
+            <div class="radial-grid">
+                <div class="radial-item animate-left"><div class="radial-circle" data-value="95"><div class="radial-inner">95%</div></div><h3>Accuracy</h3><img src="it12.webp" style="width:100%; border-radius:15px; margin-top:15px;"></div>
+                <div class="radial-item animate-up"><div class="radial-circle" data-value="99"><div class="radial-inner">99.9%</div></div><h3>Uptime</h3><img src="it11.webp" style="width:100%; border-radius:15px; margin-top:15px;"></div>
+                <div class="radial-item animate-right"><div class="radial-circle" data-value="85"><div class="radial-inner">85%</div></div><h3>Faster Insights</h3><img src="it9.webp" style="width:100%; border-radius:15px; margin-top:15px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 6: ZIGZAG CONTENT -->
+    <div class="section section-light">
+        <div class="container zigzag-content">
+            <div class="zigzag-item"><img src="it15.webp" class="zigzag-img animate-left"><div class="animate-right"><div class="badge">AI-Powered</div><h2>Unlock Hidden Insights</h2><p style="color:#666;">Our machine learning models analyze billions of data points in real-time, uncovering patterns and opportunities you never knew existed.</p><a href="404.html" class="btn-outline btn">Explore Platform →</a></div></div>
+            <div class="zigzag-item reverse"><img src="it14.webp" class="zigzag-img animate-right"><div class="animate-left"><div class="badge">Real-Time</div><h2>Live Decision Making</h2><p style="color:#666;">Get instant insights with sub-second query performance on billions of rows of data.</p><a href="404.html" class="btn-outline btn">Learn More →</a></div></div>
+        </div>
+    </div>
+
+    <!-- SECTION 7: PRICING SWITCH -->
+    <div class="section section-warm">
+        <div class="container">
+            <div class="badge animate-up">Pricing Plans</div>
+            <h2 class="animate-up">Choose Your Plan</h2>
+            <div class="pricing-switch"><button class="switch-btn" id="togglePrice">Monthly → Yearly (Save 20%)</button></div>
+            <div class="pricing-grid">
+                <div class="pricing-card animate-left"><img src="it1.webp" class="pricing-img"><i class="fas fa-chart-line" style="font-size:2rem; color:#4f46e5;"></i><h3>Starter</h3><div class="countup-number" id="price1">$499</div><p>/month</p><a href="404.html" class="btn" style="margin-top:20px;">Get Started →</a></div>
+                <div class="pricing-card featured animate-up"><img src="it5.webp" class="pricing-img"><i class="fas fa-crown" style="font-size:2rem; color:#4f46e5;"></i><h3>Professional</h3><div class="countup-number" id="price2">$999</div><p>/month</p><a href="404.html" class="btn" style="margin-top:20px;">Get Started →</a></div>
+                <div class="pricing-card animate-right"><img src="it10.webp" class="pricing-img"><i class="fas fa-building" style="font-size:2rem; color:#4f46e5;"></i><h3>Enterprise</h3><div class="countup-number">Custom</div><p>Contact us</p><a href="404.html" class="btn" style="margin-top:20px;">Contact Sales →</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 8: TESTIMONIAL SLIDER -->
+    <div class="section section-light">
+        <div class="container">
+            <div class="testimonial-slider animate-up">
+                <img src="it11.webp" class="testimonial-avatar" onerror="this.src='https://placehold.co/80x80/4f46e5/white?text=MC'">
+                <i class="fas fa-quote-left" style="font-size:2.5rem; color:#4f46e5; opacity:0.5;"></i>
+                <p style="font-size:1.2rem; margin:20px 0;">"Stackly IT's analytics platform transformed how we make decisions. Real-time insights helped us increase revenue by 35% in just 6 months."</p>
+                <h4>— Michael Chen, CDO</h4>
+                <p style="color:#666;">Global Retail Chain</p>
+                <a href="404.html" style="color:#4f46e5; margin-top:20px; display:inline-block;">Read Case Study →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 9: LOGO WALL -->
+    <div class="section section-warm">
+        <div class="container">
+            <div class="badge animate-up">Trusted By</div>
+            <h2 class="animate-up">Industry Leaders</h2>
+            <div class="logo-wall">
+                <div class="logo-wall-item animate-scale"><i class="fab fa-aws fa-2x"></i><br>AWS</div>
+                <div class="logo-wall-item animate-scale"><i class="fab fa-microsoft fa-2x"></i><br>Azure</div>
+                <div class="logo-wall-item animate-scale"><i class="fab fa-google fa-2x"></i><br>Google</div>
+                <div class="logo-wall-item animate-scale"><i class="fas fa-chart-pie fa-2x"></i><br>Tableau</div>
+                <div class="logo-wall-item animate-scale"><i class="fas fa-database fa-2x"></i><br>Snowflake</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 10: CTA BLOCK -->
+    <div class="section section-light">
+        <div class="container">
+            <div class="cta-block animate-up">
+                <h2 style="color:white;">Ready to Unlock Your Data Potential?</h2>
+                <p style="margin: 20px 0; opacity:0.9;">Get a free data assessment and analytics roadmap from our data science team.</p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="404.html" class="btn" style="background: white; color: #1e1b4b;">Get Free Assessment →</a>
+                    <a href="404.html" class="btn" style="background: transparent; border: 2px solid white;">Talk to Data Experts →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- FOOTER PLACEHOLDER - Footer will load here -->
+<div id="footer-placeholder"></div>
+
+    <script>
+
+        // Load Header and Footer dynamically
+document.addEventListener('DOMContentLoaded', function() {
+    // Load Header
+    fetch('header.html')
+        .then(response => {
+            if (!response.ok) throw new Error('Header not found');
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('header-placeholder').innerHTML = data;
+            // Initialize header functionality after loading
+            initHeader();
+        })
+        .catch(error => {
+            console.error('Error loading header:', error);
+            document.getElementById('header-placeholder').innerHTML = '<div style="background:#ff6b6b; color:white; padding:10px; text-align:center;">Header failed to load</div>';
+        });
+
+    // Load Footer
+    fetch('footer.html')
+        .then(response => {
+            if (!response.ok) throw new Error('Footer not found');
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
+            // Initialize footer functionality after loading
+            initFooter();
+        })
+        .catch(error => {
+            console.error('Error loading footer:', error);
+            document.getElementById('footer-placeholder').innerHTML = '<div style="background:#1a1a2e; color:#a0aec0; padding:20px; text-align:center;">Footer failed to load</div>';
+        });
+});
+
+// Initialize Header Functions (Hamburger Menu, Navigation, etc.)
+function initHeader() {
+    // Hamburger Menu Toggle
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (hamburgerBtn && mobileMenu) {
+        hamburgerBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+    }
+
+    // Desktop Navigation Buttons
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const page = this.getAttribute('data-page');
+            if (page) {
+                window.location.href = page + '.html';
+            }
+        });
+    });
+
+    // Mobile Navigation Buttons (without dropdowns)
+    document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const page = this.getAttribute('data-page');
+            if (page) {
+                window.location.href = page + '.html';
+            }
+            // Close mobile menu after click
+            if (hamburgerBtn && mobileMenu) {
+                hamburgerBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    // Desktop Login Button
+    const loginBtn = document.getElementById('loginBtn');
+    if (loginBtn) {
+        loginBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'login.html';
+        });
+    }
+
+    // Desktop Get Started Button
+    const getStartedBtn = document.getElementById('getStartedBtn');
+    if (getStartedBtn) {
+        getStartedBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'signup.html';
+        });
+    }
+
+    // ===== IMPORTANT: Mobile Login & Get Started Buttons =====
+    const mobileLoginBtn = document.getElementById('mobileLoginBtn');
+    if (mobileLoginBtn) {
+        // Remove any existing listeners to avoid duplicates
+        const newMobileLoginBtn = mobileLoginBtn.cloneNode(true);
+        mobileLoginBtn.parentNode.replaceChild(newMobileLoginBtn, mobileLoginBtn);
+        
+        newMobileLoginBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = 'login.html';
+        });
+    }
+
+    const mobileGetStartedBtn = document.getElementById('mobileGetStartedBtn');
+    if (mobileGetStartedBtn) {
+        // Remove any existing listeners to avoid duplicates
+        const newMobileGetStartedBtn = mobileGetStartedBtn.cloneNode(true);
+        mobileGetStartedBtn.parentNode.replaceChild(newMobileGetStartedBtn, mobileGetStartedBtn);
+        
+        newMobileGetStartedBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = 'signup.html';
+        });
+    }
+
+    // Logo Click
+    const logoSect = document.querySelector('.logo-section');
+    if (logoSect) {
+        logoSect.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'index.html';
+        });
+    }
+
+    console.log('Header initialized - All buttons working');
+}
+
+// Initialize Footer Functions (Newsletter, etc.)
+function initFooter() {
+    const subscribeBtn = document.getElementById('footerSubscribeBtn');
+    const emailInput = document.getElementById('footerEmail');
+    const emailError = document.getElementById('footerEmailError');
+
+    function validateEmail(email) {
+        return /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/.test(email);
+    }
+
+    if (subscribeBtn) {
+        subscribeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const email = emailInput.value.trim();
+            
+            if (!email) {
+                emailError.classList.add('show');
+                emailError.textContent = 'Please enter your email address';
+                emailInput.classList.add('error');
+            } else if (!validateEmail(email)) {
+                emailError.classList.add('show');
+                emailError.textContent = 'Please enter a valid email address';
+                emailInput.classList.add('error');
+            } else {
+                emailError.classList.remove('show');
+                emailInput.classList.remove('error');
+                window.location.href = '404.html';
+            }
+        });
+    }
+
+    if (emailInput) {
+        emailInput.addEventListener('input', function() {
+            if (this.value.trim()) {
+                emailError.classList.remove('show');
+                this.classList.remove('error');
+            }
+        });
+    }
+}
+
+// Handle Window Resize (Close mobile menu on resize)
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (hamburgerBtn && mobileMenu) {
+            hamburgerBtn.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+});
+
+        //=============================================
+        // Scroll Animation Observer
+        const animateElements = document.querySelectorAll('.animate-left, .animate-right, .animate-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+        animateElements.forEach(el => observer.observe(el));
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const startCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const current = parseInt(counter.innerText);
+                    const increment = Math.ceil(target / 150);
+                    if (current < target) {
+                        counter.innerText = current + increment;
+                        setTimeout(updateCount, 20);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+        };
+        const statsSection = document.querySelector('.countup-grid')?.closest('.section');
+        if (statsSection) {
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        startCounters();
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+            counterObserver.observe(statsSection);
+        }
+
+        // Tabs Functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.getAttribute('data-tab');
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Pricing Toggle
+        let isYearly = false;
+        const toggleBtn = document.getElementById('togglePrice');
+        const price1 = document.getElementById('price1');
+        const price2 = document.getElementById('price2');
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => {
+                isYearly = !isYearly;
+                if (isYearly) {
+                    price1.innerText = '$399';
+                    price2.innerText = '$799';
+                    toggleBtn.innerText = 'Yearly → Monthly';
+                } else {
+                    price1.innerText = '$499';
+                    price2.innerText = '$999';
+                    toggleBtn.innerText = 'Monthly → Yearly (Save 20%)';
+                }
+            });
+        }
+
+        // Radial Progress
+        const radials = document.querySelectorAll('.radial-circle');
+        radials.forEach(radial => {
+            const inner = radial.querySelector('.radial-inner');
+            if (inner) {
+                let value = parseInt(inner.innerText);
+                if (isNaN(value)) value = 95;
+                const angle = (value / 100) * 360;
+                radial.style.background = `conic-gradient(#4f46e5 ${angle}deg, #e0e7ff ${angle}deg)`;
+            }
+        });
+
+        console.log("Data & Analytics | More images added | Left/Right scroll animations | Hover effects | All buttons → 404.html");
+    </script>
+</body>
+</html>

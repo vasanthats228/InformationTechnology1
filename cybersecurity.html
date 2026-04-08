@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <title>Cybersecurity | Stackly IT Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #faf8f5;
+            color: #1a1a2e;
+            line-height: 1.5;
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+            padding-top: 100px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+        }
+
+        .section {
+            padding: 100px 0;
+            overflow-x: hidden;
+        }
+
+        .section-light {
+            background: #ffffff;
+        }
+        .section-warm {
+            background: #f5efe8;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #4f46e5;
+            color: white;
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #6366f1;
+            transform: translateY(-3px);
+            gap: 15px;
+            box-shadow: 0 8px 20px rgba(79,70,229,0.3);
+        }
+
+        .badge {
+            background: #e0e7ff;
+            color: #4f46e5;
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            background: #4f46e5;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* SECTION 1: HERO with Background Image */
+        .hero {
+            background: linear-gradient(rgba(15,23,42,0.85), rgba(30,27,75,0.9)), url('it15.webp');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .hero .badge { background: rgba(79,70,229,0.3); color: #a5b4fc; }
+
+        /* SECTION 2: METER BARS */
+        .meter-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        .meter-item {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            transition: all 0.3s ease;
+        }
+        .meter-item:hover {
+            transform: translateX(8px);
+        }
+        .meter-label {
+            width: 180px;
+            font-weight: 600;
+        }
+        .meter-bar {
+            flex: 1;
+            height: 12px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .meter-fill {
+            height: 100%;
+            background: #4f46e5;
+            width: 0%;
+            border-radius: 10px;
+            transition: width 1.5s ease;
+        }
+        .meter-value {
+            width: 70px;
+            font-weight: 700;
+            color: #4f46e5;
+        }
+
+        /* SECTION 3: PILLAR ROW */
+        .pillar-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .pillar-block {
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 24px;
+            transition: all 0.3s ease;
+        }
+        .pillar-block:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .pillar-icon {
+            width: 80px;
+            height: 80px;
+            background: #e0e7ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: #4f46e5;
+            transition: all 0.3s ease;
+        }
+        .pillar-block:hover .pillar-icon {
+            background: #4f46e5;
+            transform: scale(1.05);
+        }
+        .pillar-block:hover .pillar-icon i {
+            color: white;
+        }
+
+        /* SECTION 4: SPLIT WITH VIDEO */
+        .split-video {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+        .split-video > * { flex: 1; }
+        .video-placeholder {
+            background: #1e1b4b;
+            border-radius: 30px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .video-placeholder:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        /* SECTION 5: THREAT LIST */
+        .threat-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .threat-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 60px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+        }
+        .threat-row:hover {
+            transform: translateX(12px);
+            box-shadow: 0 8px 20px rgba(79,70,229,0.15);
+            background: #f8fafc;
+        }
+        .threat-icon {
+            width: 50px;
+            height: 50px;
+            background: #fee2e2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ef4444;
+            transition: all 0.3s ease;
+        }
+        .threat-row:hover .threat-icon {
+            background: #4f46e5;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* SECTION 6: GALLERY GRID (Fixed - No horizontal scroll) */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .gallery-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .gallery-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .gallery-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .gallery-card:hover img {
+            transform: scale(1.05);
+        }
+        .gallery-card .info {
+            padding: 20px;
+        }
+
+        /* SECTION 7: TIMELINE GRID (Fixed) */
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .timeline-card {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            background: white;
+            border-radius: 24px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+        .timeline-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            background: #f8fafc;
+        }
+        .timeline-card img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        .timeline-card:hover img {
+            transform: scale(1.05);
+        }
+        .timeline-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #4f46e5;
+            margin-bottom: 8px;
+        }
+
+        /* SECTION 8: QUOTE BLOCK */
+        .quote-block {
+            background: #e0e7ff;
+            padding: 60px;
+            border-radius: 50px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .quote-block:hover {
+            transform: scale(1.01);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+
+        /* SECTION 9: PACKAGE GRID (Fixed) */
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .package-card {
+            background: white;
+            border-radius: 24px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        .package-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 35px rgba(79,70,229,0.15);
+            border-color: #c7d2fe;
+        }
+        .package-card.featured {
+            border: 2px solid #4f46e5;
+            background: linear-gradient(135deg, #fff, #f5f3ff);
+        }
+        .package-icon {
+            font-size: 2.5rem;
+            color: #4f46e5;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        .package-card:hover .package-icon {
+            transform: scale(1.1);
+        }
+
+        /* SECTION 10: CTA BLOCK */
+        .cta-block {
+            background: linear-gradient(120deg, #0f172a, #1e1b4b);
+            padding: 60px;
+            border-radius: 50px;
+            text-align: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .cta-block:hover {
+            transform: scale(1.01);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        /* Animation Classes - Left/Right Scroll */
+        .animate-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: all 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .animate-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: all 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .animate-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .animate-left.show, .animate-right.show, .animate-up.show {
+            opacity: 1;
+            transform: translateX(0);
+            transform: translateY(0);
+        }
+
+        /* Responsive - Fixed horizontal scroll issue */
+        @media (max-width: 1000px) {
+            .gallery-grid, .package-grid, .timeline-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid, .package-grid, .timeline-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .pillar-row {
+                flex-direction: column;
+            }
+            .split-video {
+                flex-direction: column;
+            }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
+            .section { padding: 60px 0; }
+            .container { padding: 0 20px; }
+            .meter-item { flex-direction: column; align-items: flex-start; }
+            .timeline-card { flex-direction: column; align-items: center; text-align: center; }
+            .timeline-card img { margin-bottom: 15px; }
+            .quote-block { padding: 30px; border-radius: 30px; }
+            .cta-block { padding: 40px 20px; border-radius: 30px; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 16px; }
+            .gallery-card img { height: 180px; }
+            .package-card { padding: 25px 20px; }
+        }
+
+        /* Ensure no horizontal overflow */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER PLACEHOLDER - Header will load here -->
+<div id="header-placeholder"></div>
+
+    <!-- SECTION 1: HERO with Background Image -->
+    <div class="hero">
+        <div class="container">
+            <div class="badge animate-up">Cybersecurity</div>
+            <h1 class="animate-left">Zero-Trust Security<br>for Modern Business</h1>
+            <p class="animate-left" style="font-size: 1.2rem; max-width: 500px; margin: 25px 0 35px;">24/7 threat monitoring, AI-powered detection, and enterprise-grade protection.</p>
+            <a href="404.html" class="btn animate-up">Get Protected →</a>
+        </div>
+    </div>
+
+    <!-- SECTION 2: METER BARS -->
+    <div class="section section-light">
+        <div class="container">
+            <div class="badge animate-left">Security Metrics</div>
+            <h2 class="animate-left">Our Protection Capabilities</h2>
+            <div class="meter-container">
+                <div class="meter-item animate-right"><div class="meter-label">Threat Detection Rate</div><div class="meter-bar"><div class="meter-fill" data-width="99.9"></div></div><div class="meter-value">99.9%</div></div>
+                <div class="meter-item animate-left"><div class="meter-label">Incident Response Time</div><div class="meter-bar"><div class="meter-fill" data-width="95"></div></div><div class="meter-value">&lt;5 min</div></div>
+                <div class="meter-item animate-right"><div class="meter-label">False Positive Rate</div><div class="meter-bar"><div class="meter-fill" data-width="98"></div></div><div class="meter-value">&lt;2%</div></div>
+                <div class="meter-item animate-left"><div class="meter-label">Compliance Readiness</div><div class="meter-bar"><div class="meter-fill" data-width="100"></div></div><div class="meter-value">100%</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 3: PILLAR ROW -->
+    <div class="section section-warm">
+        <div class="container">
+            <div class="badge animate-up">Core Capabilities</div>
+            <h2 class="animate-up">Security Pillars</h2>
+            <div class="pillar-row">
+                <div class="pillar-block animate-left"><div class="pillar-icon"><i class="fas fa-shield-alt"></i></div><h3>Zero-Trust</h3><p style="color:#666;">Identity-based access with continuous verification</p><a href="404.html" style="color:#4f46e5;">Learn →</a></div>
+                <div class="pillar-block animate-up"><div class="pillar-icon"><i class="fas fa-eye"></i></div><h3>24/7 Monitoring</h3><p style="color:#666;">AI-powered SOC with real-time threat hunting</p><a href="404.html" style="color:#4f46e5;">Learn →</a></div>
+                <div class="pillar-block animate-right"><div class="pillar-icon"><i class="fas fa-fingerprint"></i></div><h3>Identity Security</h3><p style="color:#666;">MFA, SSO, and privileged access management</p><a href="404.html" style="color:#4f46e5;">Learn →</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 4: SPLIT WITH VIDEO -->
+    <div class="section section-light">
+        <div class="container split-video">
+            <div class="animate-left"><div class="badge">See It In Action</div><h2>AI-Powered Threat Intelligence</h2><p style="color:#666; margin:20px 0;">Machine learning models analyze millions of signals in real-time to detect and block threats before they impact your business.</p><a href="404.html" class="btn">Watch Demo →</a></div>
+            <div class="video-placeholder animate-right"><video controls style="width:100%;"><source src="itv1.mp4" type="video/mp4"></video></div>
+        </div>
+    </div>
+
+    <!-- SECTION 5: THREAT LIST -->
+    <div class="section section-warm">
+        <div class="container">
+            <div class="badge animate-up">Threat Coverage</div>
+            <h2 class="animate-up">We Protect Against</h2>
+            <div class="threat-list">
+                <div class="threat-row animate-left"><div class="threat-icon"><i class="fas fa-skull"></i></div><div><strong>Ransomware</strong><p style="color:#666;">Blocked before execution with behavioral analysis</p></div><a href="404.html" style="margin-left:auto; color:#4f46e5;">→</a></div>
+                <div class="threat-row animate-right"><div class="threat-icon"><i class="fas fa-user-secret"></i></div><div><strong>Phishing Attacks</strong><p style="color:#666;">Email filtering and link protection</p></div><a href="404.html" style="margin-left:auto; color:#4f46e5;">→</a></div>
+                <div class="threat-row animate-left"><div class="threat-icon"><i class="fas fa-database"></i></div><div><strong>Data Breaches</strong><p style="color:#666;">DLP, encryption, and data loss prevention</p></div><a href="404.html" style="margin-left:auto; color:#4f46e5;">→</a></div>
+                <div class="threat-row animate-right"><div class="threat-icon"><i class="fas fa-bug"></i></div><div><strong>Zero-Day Exploits</strong><p style="color:#666;">AI-powered behavioral analysis</p></div><a href="404.html" style="margin-left:auto; color:#4f46e5;">→</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 6: GALLERY GRID (Fixed - No horizontal scroll) -->
+    <div class="section section-light">
+        <div class="container">
+            <div class="badge animate-up">Global Security Centers</div>
+            <h2 class="animate-up">Our Worldwide Footprint</h2>
+            <div class="gallery-grid">
+                <div class="gallery-card animate-left"><img src="it14.webp"><div class="info"><h3>North America SOC</h3><p>Virginia, USA - 24/7 Operations</p><a href="404.html" style="color:#4f46e5;">View Center →</a></div></div>
+                <div class="gallery-card animate-up"><img src="it13.webp"><div class="info"><h3>Europe SOC</h3><p>London, UK - 24/7 Operations</p><a href="404.html" style="color:#4f46e5;">View Center →</a></div></div>
+                <div class="gallery-card animate-up"><img src="it12.webp"><div class="info"><h3>Asia-Pacific SOC</h3><p>Singapore - 24/7 Operations</p><a href="404.html" style="color:#4f46e5;">View Center →</a></div></div>
+                <div class="gallery-card animate-right"><img src="it11.webp"><div class="info"><h3>Middle East SOC</h3><p>Dubai, UAE - 24/7 Operations</p><a href="404.html" style="color:#4f46e5;">View Center →</a></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 7: TIMELINE GRID (Fixed) -->
+    <div class="section section-warm">
+        <div class="container">
+            <div class="badge animate-up">Incident Response</div>
+            <h2 class="animate-up">Security Lifecycle</h2>
+            <div class="timeline-grid">
+                <div class="timeline-card animate-left"><img src="it10.webp"><div><div class="timeline-number">01</div><h3>Detect</h3><p>Continuous monitoring and anomaly detection</p><a href="404.html" style="color:#4f46e5;">Learn More →</a></div></div>
+                <div class="timeline-card animate-right"><img src="it9.webp"><div><div class="timeline-number">02</div><h3>Analyze</h3><p>AI-powered threat analysis and correlation</p><a href="404.html" style="color:#4f46e5;">Learn More →</a></div></div>
+                <div class="timeline-card animate-left"><img src="it8.webp"><div><div class="timeline-number">03</div><h3>Respond</h3><p>Automated containment and remediation</p><a href="404.html" style="color:#4f46e5;">Learn More →</a></div></div>
+                <div class="timeline-card animate-right"><img src="it7.webp"><div><div class="timeline-number">04</div><h3>Recover</h3><p>Forensic analysis and restoration</p><a href="404.html" style="color:#4f46e5;">Learn More →</a></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 8: QUOTE BLOCK -->
+    <div class="section section-light">
+        <div class="container">
+            <div class="quote-block animate-up">
+                <i class="fas fa-quote-left" style="font-size: 2.5rem; color: #4f46e5; opacity: 0.5;"></i>
+                <p style="font-size: 1.3rem; margin: 20px 0;">"Stackly IT stopped a sophisticated ransomware attack within minutes. Their 24/7 SOC is exceptional. Zero-trust implementation gave us complete visibility."</p>
+                <h4>— David Chen, CISO</h4>
+                <p style="color:#666;">Global Financial Services</p>
+                <a href="404.html" style="color:#4f46e5; margin-top: 20px; display: inline-block;">Read Full Case Study →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 9: PACKAGE GRID (Fixed) -->
+    <div class="section section-warm">
+        <div class="container">
+            <div class="badge animate-up">Security Plans</div>
+            <h2 class="animate-up">Choose Your Protection Level</h2>
+            <div class="package-grid">
+                <div class="package-card animate-left"><div class="package-icon"><i class="fas fa-shield"></i></div><h3>Essential</h3><div class="package-price">$2k<span style="font-size:1rem;">/mo</span></div><p>Basic threat monitoring and email protection</p><a href="404.html" class="btn" style="margin-top:20px;">Get Started →</a></div>
+                <div class="package-card featured animate-up"><div class="package-icon"><i class="fas fa-crown"></i></div><h3>Enterprise</h3><div class="package-price">Custom</div><p>Full SOC, zero-trust, dedicated team</p><a href="404.html" class="btn" style="margin-top:20px;">Contact Sales →</a></div>
+                <div class="package-card animate-right"><div class="package-icon"><i class="fas fa-chart-line"></i></div><h3>Professional</h3><div class="package-price">$5k<span style="font-size:1rem;">/mo</span></div><p>Advanced threat hunting and compliance</p><a href="404.html" class="btn" style="margin-top:20px;">Get Started →</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 10: CTA BLOCK -->
+    <div class="section section-light">
+        <div class="container">
+            <div class="cta-block animate-up">
+                <h2 style="color:white;">Ready to Secure Your Business?</h2>
+                <p style="margin: 20px 0; opacity: 0.9;">Get a free security assessment and risk analysis from our cybersecurity experts.</p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="404.html" class="btn" style="background: white; color: #1e1b4b;">Get Free Assessment →</a>
+                    <a href="404.html" class="btn" style="background: transparent; border: 2px solid white;">Contact Security Team →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- FOOTER PLACEHOLDER - Footer will load here -->
+<div id="footer-placeholder"></div>
+
+    <script>
+
+        // Load Header and Footer dynamically
+document.addEventListener('DOMContentLoaded', function() {
+    // Load Header
+    fetch('header.html')
+        .then(response => {
+            if (!response.ok) throw new Error('Header not found');
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('header-placeholder').innerHTML = data;
+            // Initialize header functionality after loading
+            initHeader();
+        })
+        .catch(error => {
+            console.error('Error loading header:', error);
+            document.getElementById('header-placeholder').innerHTML = '<div style="background:#ff6b6b; color:white; padding:10px; text-align:center;">Header failed to load</div>';
+        });
+
+    // Load Footer
+    fetch('footer.html')
+        .then(response => {
+            if (!response.ok) throw new Error('Footer not found');
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
+            // Initialize footer functionality after loading
+            initFooter();
+        })
+        .catch(error => {
+            console.error('Error loading footer:', error);
+            document.getElementById('footer-placeholder').innerHTML = '<div style="background:#1a1a2e; color:#a0aec0; padding:20px; text-align:center;">Footer failed to load</div>';
+        });
+});
+
+// Initialize Header Functions (Hamburger Menu, Navigation, etc.)
+function initHeader() {
+    // Hamburger Menu Toggle
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (hamburgerBtn && mobileMenu) {
+        hamburgerBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+    }
+
+    // Desktop Navigation Buttons
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const page = this.getAttribute('data-page');
+            if (page) {
+                window.location.href = page + '.html';
+            }
+        });
+    });
+
+    // Mobile Navigation Buttons (without dropdowns)
+    document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const page = this.getAttribute('data-page');
+            if (page) {
+                window.location.href = page + '.html';
+            }
+            // Close mobile menu after click
+            if (hamburgerBtn && mobileMenu) {
+                hamburgerBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    // Desktop Login Button
+    const loginBtn = document.getElementById('loginBtn');
+    if (loginBtn) {
+        loginBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'login.html';
+        });
+    }
+
+    // Desktop Get Started Button
+    const getStartedBtn = document.getElementById('getStartedBtn');
+    if (getStartedBtn) {
+        getStartedBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'signup.html';
+        });
+    }
+
+    // ===== IMPORTANT: Mobile Login & Get Started Buttons =====
+    const mobileLoginBtn = document.getElementById('mobileLoginBtn');
+    if (mobileLoginBtn) {
+        // Remove any existing listeners to avoid duplicates
+        const newMobileLoginBtn = mobileLoginBtn.cloneNode(true);
+        mobileLoginBtn.parentNode.replaceChild(newMobileLoginBtn, mobileLoginBtn);
+        
+        newMobileLoginBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = 'login.html';
+        });
+    }
+
+    const mobileGetStartedBtn = document.getElementById('mobileGetStartedBtn');
+    if (mobileGetStartedBtn) {
+        // Remove any existing listeners to avoid duplicates
+        const newMobileGetStartedBtn = mobileGetStartedBtn.cloneNode(true);
+        mobileGetStartedBtn.parentNode.replaceChild(newMobileGetStartedBtn, mobileGetStartedBtn);
+        
+        newMobileGetStartedBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = 'signup.html';
+        });
+    }
+
+    // Logo Click
+    const logoSect = document.querySelector('.logo-section');
+    if (logoSect) {
+        logoSect.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'index.html';
+        });
+    }
+
+    console.log('Header initialized - All buttons working');
+}
+
+// Initialize Footer Functions (Newsletter, etc.)
+function initFooter() {
+    const subscribeBtn = document.getElementById('footerSubscribeBtn');
+    const emailInput = document.getElementById('footerEmail');
+    const emailError = document.getElementById('footerEmailError');
+
+    function validateEmail(email) {
+        return /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/.test(email);
+    }
+
+    if (subscribeBtn) {
+        subscribeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const email = emailInput.value.trim();
+            
+            if (!email) {
+                emailError.classList.add('show');
+                emailError.textContent = 'Please enter your email address';
+                emailInput.classList.add('error');
+            } else if (!validateEmail(email)) {
+                emailError.classList.add('show');
+                emailError.textContent = 'Please enter a valid email address';
+                emailInput.classList.add('error');
+            } else {
+                emailError.classList.remove('show');
+                emailInput.classList.remove('error');
+                window.location.href = '404.html';
+            }
+        });
+    }
+
+    if (emailInput) {
+        emailInput.addEventListener('input', function() {
+            if (this.value.trim()) {
+                emailError.classList.remove('show');
+                this.classList.remove('error');
+            }
+        });
+    }
+}
+
+// Handle Window Resize (Close mobile menu on resize)
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (hamburgerBtn && mobileMenu) {
+            hamburgerBtn.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+});
+
+        //==========================================================
+        // Scroll Animation Observer for Left/Right animations
+        const animateElements = document.querySelectorAll('.animate-left, .animate-right, .animate-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+        animateElements.forEach(el => observer.observe(el));
+
+        // Meter Bar Fill Animation
+        const meterBars = document.querySelectorAll('.meter-fill');
+        const meterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const width = entry.target.getAttribute('data-width');
+                    entry.target.style.width = width + '%';
+                    meterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        meterBars.forEach(bar => meterObserver.observe(bar));
+
+        console.log("Cybersecurity | Fixed horizontal scroll | Left/Right animations | Hover effects | All buttons → 404.html");
+    </script>
+</body>
+</html>

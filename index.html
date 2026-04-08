@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Loading | Information Technology</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Preloader Container */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0c15 0%, #0f172a 50%, #1e1b4b 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1), visibility 0.8s ease;
+        }
+
+        .preloader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* 3D Cube Animation */
+        .cube-container {
+            perspective: 800px;
+            margin-bottom: 40px;
+        }
+
+        .cube {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotateCube 2.5s infinite ease-in-out;
+            margin: 0 auto;
+        }
+
+        .cube-face {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: rgba(79, 70, 229, 0.2);
+            border: 2px solid #4f46e5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .cube-face.front { transform: translateZ(50px); background: rgba(79, 70, 229, 0.3); }
+        .cube-face.back { transform: rotateY(180deg) translateZ(50px); }
+        .cube-face.right { transform: rotateY(90deg) translateZ(50px); }
+        .cube-face.left { transform: rotateY(-90deg) translateZ(50px); }
+        .cube-face.top { transform: rotateX(90deg) translateZ(50px); }
+        .cube-face.bottom { transform: rotateX(-90deg) translateZ(50px); }
+
+        @keyframes rotateCube {
+            0% { transform: rotateX(0deg) rotateY(0deg); }
+            25% { transform: rotateX(90deg) rotateY(0deg); }
+            50% { transform: rotateX(90deg) rotateY(90deg); }
+            75% { transform: rotateX(0deg) rotateY(90deg); }
+            100% { transform: rotateX(0deg) rotateY(0deg); }
+        }
+
+        /* Glowing Text */
+        .glow-text {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: 6px;
+            background: linear-gradient(135deg, #ffffff, #a5b4fc, #4f46e5, #818cf8);
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: textShine 2s linear infinite;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        @keyframes textShine {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 300% 50%; }
+        }
+
+        /* Circuit Lines Animation */
+        .circuit-container {
+            position: relative;
+            width: 300px;
+            height: 100px;
+            margin: 30px auto;
+        }
+
+        .circuit-line {
+            position: absolute;
+            background: #4f46e5;
+            opacity: 0.6;
+        }
+
+        .line-horizontal {
+            width: 100%;
+            height: 2px;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            animation: pulseLine 1.5s infinite;
+        }
+
+        .line-vertical {
+            width: 2px;
+            height: 100%;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            animation: pulseLine 1.5s infinite 0.5s;
+        }
+
+        @keyframes pulseLine {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+
+        /* Loading Bar Container */
+        .loading-container {
+            width: 320px;
+            margin: 30px auto 0;
+        }
+
+        .loading-bar {
+            width: 100%;
+            height: 3px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loading-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #4f46e5, #818cf8, #a5b4fc);
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+
+        /* Percentage */
+        .percentage {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #a5b4fc;
+            margin-top: 15px;
+            font-family: monospace;
+            letter-spacing: 2px;
+        }
+
+        /* Loading Status Text */
+        .status-text {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.85rem;
+            margin-top: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* Particle Effect */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #4f46e5;
+            border-radius: 50%;
+            opacity: 0;
+            animation: particleFloat 3s infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(0.5);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateY(-30px) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-60px) scale(0.5);
+            }
+        }
+
+        /* Particles Container */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="particles" id="particles"></div>
+        
+        <div style="text-align: center; position: relative; z-index: 10;">
+            <!-- 3D Cube -->
+            <div class="cube-container">
+                <div class="cube">
+                    <div class="cube-face front"><i class="fas fa-microchip"></i></div>
+                    <div class="cube-face back"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <div class="cube-face right"><i class="fas fa-shield-alt"></i></div>
+                    <div class="cube-face left"><i class="fas fa-chart-line"></i></div>
+                    <div class="cube-face top"><i class="fas fa-database"></i></div>
+                    <div class="cube-face bottom"><i class="fas fa-network-wired"></i></div>
+                </div>
+            </div>
+
+            <!-- Glowing Text -->
+            <div class="glow-text">INFORMATION<br>TECHNOLOGY</div>
+
+            <!-- Circuit Lines -->
+            <div class="circuit-container">
+                <div class="circuit-line line-horizontal"></div>
+                <div class="circuit-line line-vertical"></div>
+            </div>
+
+            <!-- Loading Bar -->
+            <div class="loading-container">
+                <div class="loading-bar">
+                    <div class="loading-progress" id="loadingProgress"></div>
+                </div>
+                <div class="percentage" id="percentage">0%</div>
+                <div class="status-text" id="statusText">Initializing Systems...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const preloader = document.getElementById('preloader');
+            const loadingProgress = document.getElementById('loadingProgress');
+            const percentageEl = document.getElementById('percentage');
+            const statusText = document.getElementById('statusText');
+            
+            // Status messages for different loading stages
+            const statusMessages = [
+                { progress: 10, message: 'Loading Modules...' },
+                { progress: 25, message: 'Establishing Secure Connection...' },
+                { progress: 40, message: 'Initializing Database...' },
+                { progress: 55, message: 'Configuring Cloud Services...' },
+                { progress: 70, message: 'Setting up Security Protocols...' },
+                { progress: 85, message: 'Almost Ready...' },
+                { progress: 95, message: 'Finalizing Setup...' },
+                { progress: 100, message: 'Redirecting to Dashboard...' }
+            ];
+            
+            let progress = 0;
+            let currentMessageIndex = 0;
+            
+            // Create floating particles
+            function createParticles() {
+                const particlesContainer = document.getElementById('particles');
+                for (let i = 0; i < 50; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.top = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 3 + 's';
+                    particle.style.animationDuration = 2 + Math.random() * 2 + 's';
+                    particlesContainer.appendChild(particle);
+                }
+            }
+            
+            // Update status message based on progress
+            function updateStatusMessage(currentProgress) {
+                for (let i = statusMessages.length - 1; i >= 0; i--) {
+                    if (currentProgress >= statusMessages[i].progress) {
+                        if (currentMessageIndex !== i) {
+                            currentMessageIndex = i;
+                            statusText.textContent = statusMessages[i].message;
+                        }
+                        break;
+                    }
+                }
+            }
+            
+            // Simulate loading progress
+            const interval = setInterval(function() {
+                // Random increment between 3-8%
+                const increment = Math.floor(Math.random() * 8) + 3;
+                progress += increment;
+                
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    
+                    // Update final status
+                    statusText.textContent = 'Redirecting to Home...';
+                    
+                    // Fade out preloader and redirect
+                    setTimeout(function() {
+                        preloader.classList.add('fade-out');
+                        
+                        // Redirect to home.html after fade out
+                        setTimeout(function() {
+                            window.location.href = 'home.html';
+                        }, 800);
+                    }, 500);
+                }
+                
+                // Update UI
+                loadingProgress.style.width = progress + '%';
+                percentageEl.textContent = progress + '%';
+                updateStatusMessage(progress);
+                
+            }, 120);
+            
+            // Create particles on load
+            createParticles();
+            
+            // Fallback redirect if something goes wrong (10 seconds max)
+            setTimeout(function() {
+                if (progress < 100) {
+                    window.location.href = 'home.html';
+                }
+            }, 10000);
+        })();
+    </script>
+</body>
+</html>

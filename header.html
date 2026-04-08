@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <title>IT Header | Stackly</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ========== INFORMATION TECHNOLOGY HEADER - LIGHT THEME ========== */
+        .it-header {
+            background: #ffffff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.03);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            width: 100%;
+            border-bottom: 1px solid #eef2ff;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 110px;
+            gap: 28px;
+            width: 100%;
+        }
+
+        /* Left side - Logo */
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        .logo-link:hover {
+            transform: scale(1.05) translateY(-2px);
+            filter: drop-shadow(0 8px 20px rgba(79, 70, 229, 0.15));
+        }
+
+        .logo-img {
+            height: 95px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+            transition: all 0.4s ease;
+        }
+
+        /* Middle - IT Focused Navigation (ANCHOR TAGS) */
+        .nav-middle {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            flex: 1;
+            justify-content: center;
+        }
+
+        /* Modern text styling for IT nav links */
+        .nav-link {
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            color: #334155;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            position: relative;
+            background: none;
+            border: none;
+            display: inline-block;
+            padding: 4px 0;
+        }
+
+        .nav-link:before {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2.5px;
+            background: linear-gradient(95deg, #4f46e5, #7c3aed);
+            border-radius: 4px;
+            transition: width 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        .nav-link:hover {
+            color: #4f46e5;
+            transform: translateY(-1px);
+        }
+
+        .nav-link:hover:before {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: #4f46e5;
+        }
+        
+        .nav-link.active:before {
+            width: 100%;
+        }
+
+        /* Right side buttons */
+        .right-buttons {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-shrink: 0;
+        }
+
+        .login-link {
+            background: transparent;
+            border: 1.5px solid #c7d2fe;
+            padding: 8px 22px;
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'Inter', system-ui, sans-serif;
+            color: #4f46e5;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-link:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(79, 70, 229, 0.08);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+
+        .login-link:hover:before {
+            width: 200px;
+            height: 200px;
+        }
+
+        .login-link i {
+            font-size: 14px;
+            transition: transform 0.2s;
+        }
+
+        .login-link:hover {
+            background: #f5f3ff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(79, 70, 229, 0.12);
+            border-color: #a5b4fc;
+            color: #4338ca;
+        }
+
+        .login-link:hover i {
+            transform: translateX(-3px);
+        }
+
+        .getstarted-link {
+            background: linear-gradient(95deg, #4f46e5, #7c3aed);
+            border: none;
+            padding: 9px 24px;
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: 700;
+            font-family: 'Inter', system-ui, sans-serif;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .getstarted-link:after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(115deg, rgba(255,255,255,0) 10%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 90%);
+            transform: rotate(25deg);
+            transition: all 0.5s;
+            opacity: 0;
+        }
+
+        .getstarted-link:hover:after {
+            left: 100%;
+            opacity: 1;
+            transition: all 0.7s;
+        }
+
+        .getstarted-link i {
+            font-size: 13px;
+            transition: transform 0.2s;
+        }
+
+        .getstarted-link:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(95deg, #6366f1, #8b5cf6);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.35);
+        }
+
+        .getstarted-link:hover i {
+            transform: translateX(4px);
+        }
+
+        /* Hamburger (mobile) */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+            padding: 8px;
+            background: transparent;
+            border: none;
+            z-index: 1001;
+            transition: all 0.2s;
+        }
+
+        .hamburger:hover span {
+            background: #4f46e5;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 2.5px;
+            background: #64748b;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+            background: #4f46e5;
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+            background: #4f46e5;
+        }
+
+        /* Mobile Menu - FIXED ALIGNMENT */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100vh;
+            background: #ffffff;
+            z-index: 999;
+            transition: left 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            overflow-y: auto;
+            padding-top: 120px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-menu.active {
+            left: 0;
+        }
+
+        .mobile-nav-list {
+            display: flex;
+            flex-direction: column;
+            padding: 20px 28px;
+            gap: 12px;
+        }
+
+        /* FIXED: Properly aligned mobile nav links */
+        .mobile-nav-link {
+            text-decoration: none;
+            padding: 14px 16px;
+            font-size: 17px;
+            font-weight: 600;
+            font-family: 'Inter', system-ui, sans-serif;
+            color: #334155;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+            border-radius: 12px;
+            background: #f8fafc;
+            border: 1px solid #eef2ff;
+        }
+
+        .mobile-nav-link i {
+            width: 28px;
+            color: #4f46e5;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .mobile-nav-link span {
+            flex: 1;
+            text-align: left;
+        }
+
+        .mobile-nav-link:hover {
+            color: #4f46e5;
+            background: #f0f4ff;
+            border-color: #c7d2fe;
+            transform: translateX(5px);
+        }
+
+        .mobile-nav-link:hover i {
+            transform: scale(1.1);
+        }
+
+        .mobile-actions {
+            display: none;
+            flex-direction: column;
+            gap: 16px;
+            padding: 24px 28px;
+            margin-top: 20px;
+            border-top: 1px solid #eef2ff;
+        }
+
+        .mobile-login, .mobile-getstarted {
+            text-decoration: none;
+            background: transparent;
+            border: 1.5px solid #c7d2fe;
+            padding: 14px 0;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Inter', system-ui, sans-serif;
+            color: #4f46e5;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            border-radius: 60px;
+        }
+
+        .mobile-login:hover {
+            background: #f5f3ff;
+            transform: scale(1.02);
+            gap: 16px;
+        }
+
+        .mobile-getstarted {
+            background: linear-gradient(95deg, #4f46e5, #7c3aed);
+            color: #ffffff;
+            border: none;
+            font-weight: 700;
+        }
+
+        .mobile-getstarted:hover {
+            background: linear-gradient(95deg, #6366f1, #8b5cf6);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(79, 70, 229, 0.25);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .nav-middle {
+                gap: 24px;
+            }
+            .nav-link {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .header-container {
+                padding: 0 24px;
+                gap: 20px;
+                height: 105px;
+            }
+            .logo-img {
+                height: 85px;
+            }
+            .nav-middle {
+                gap: 18px;
+            }
+            .nav-link {
+                font-size: 13px;
+            }
+            .login-link, .getstarted-link {
+                padding: 6px 14px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                height: 100px;
+                padding: 0 20px;
+            }
+            .nav-middle {
+                display: none;
+            }
+            .right-buttons {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .logo-img {
+                height: 80px;
+            }
+            .mobile-actions {
+                display: flex;
+            }
+            .mobile-menu {
+                padding-top: 115px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-container {
+                height: 90px;
+                padding: 0 16px;
+            }
+            .logo-img {
+                height: 72px;
+            }
+            .mobile-nav-link {
+                font-size: 15px;
+                padding: 12px 14px;
+            }
+            .mobile-nav-list {
+                padding: 16px 20px;
+            }
+            .mobile-actions {
+                padding: 20px 20px;
+            }
+        }
+
+        /* Import Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap');
+        
+    </style>
+</head>
+<body>
+
+<!-- ========== INFORMATION TECHNOLOGY HEADER - FULLY IT FOCUSED ========== -->
+<header class="it-header">
+    <div class="header-container">
+        <!-- LEFT: Logo redirects to index.html -->
+        <a href="index.html" class="logo-link">
+            <img src="Stackly.webp" alt="Stackly Logo" class="logo-img" onerror="this.src='https://placehold.co/300x90/4f46e5/ffffff?text=STACKLY+IT'">
+        </a>
+
+        <!-- MIDDLE: 5 Navigation Buttons - 100% Information Technology Focused -->
+        <div class="nav-middle">
+            <a href="index.html" class="nav-link" data-page="home">🏠 Home</a>
+            <a href="it-infrastructure.html" class="nav-link" data-page="infrastructure">🖥️ IT Infrastructure</a>
+            <a href="cloud-services.html" class="nav-link" data-page="cloud">☁️ Cloud Services</a>
+            <a href="cybersecurity.html" class="nav-link" data-page="security">🔒 Cybersecurity</a>
+            <a href="data-analytics.html" class="nav-link" data-page="analytics">📊 Data & Analytics</a>
+        </div>
+
+        <!-- RIGHT: Login & Get Started buttons -->
+        <div class="right-buttons">
+            <a href="login.html" class="login-link"><i class="fas fa-lock"></i> Login</a>
+            <a href="signup.html" class="getstarted-link"><i class="fas fa-rocket"></i> Get Started</a>
+        </div>
+
+        <!-- Mobile Hamburger -->
+        <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+
+<!-- Mobile Menu Panel - FIXED ALIGNMENT -->
+<div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-nav-list">
+        <a href="index.html" class="mobile-nav-link">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="it-infrastructure.html" class="mobile-nav-link">
+            <i class="fas fa-server"></i>
+            <span>IT Infrastructure</span>
+        </a>
+        <a href="cloud-services.html" class="mobile-nav-link">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <span>Cloud Services</span>
+        </a>
+        <a href="cybersecurity.html" class="mobile-nav-link">
+            <i class="fas fa-shield-alt"></i>
+            <span>Cybersecurity</span>
+        </a>
+        <a href="data-analytics.html" class="mobile-nav-link">
+            <i class="fas fa-chart-line"></i>
+            <span>Data & Analytics</span>
+        </a>
+    </div>
+    <div class="mobile-actions">
+        <a href="login.html" class="mobile-login"><i class="fas fa-lock"></i> Login</a>
+        <a href="signup.html" class="mobile-getstarted"><i class="fas fa-rocket"></i> Get Started</a>
+    </div>
+</div>
+
+<!-- JavaScript only for mobile menu toggle -->
+<script>
+    (function() {
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        function toggleMobileMenu() {
+            if (hamburgerBtn) hamburgerBtn.classList.toggle('active');
+            if (mobileMenu) mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu && mobileMenu.classList.contains('active') ? 'hidden' : '';
+        }
+        
+        function closeMobileMenu() {
+            if (hamburgerBtn) hamburgerBtn.classList.remove('active');
+            if (mobileMenu) mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        if (hamburgerBtn) {
+            hamburgerBtn.addEventListener('click', toggleMobileMenu);
+        }
+        
+        // Close mobile menu when a mobile nav link is clicked
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                closeMobileMenu();
+            });
+        });
+        
+        const mobileLogin = document.querySelector('.mobile-login');
+        const mobileGetStarted = document.querySelector('.mobile-getstarted');
+        if (mobileLogin) mobileLogin.addEventListener('click', closeMobileMenu);
+        if (mobileGetStarted) mobileGetStarted.addEventListener('click', closeMobileMenu);
+        
+        // Close when clicking outside
+        document.addEventListener('click', function(event) {
+            if (mobileMenu && mobileMenu.classList.contains('active')) {
+                const isClickInsideMenu = mobileMenu.contains(event.target);
+                const isClickOnHamburger = hamburgerBtn && hamburgerBtn.contains(event.target);
+                if (!isClickInsideMenu && !isClickOnHamburger) {
+                    closeMobileMenu();
+                }
+            }
+        });
+        
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) closeMobileMenu();
+        });
+        
+        window.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeMobileMenu();
+        });
+        
+        // Set active class based on current URL
+        const currentPath = window.location.pathname;
+        const allNavLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+        allNavLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href && currentPath.includes(href.replace('.html', ''))) {
+                link.classList.add('active');
+            }
+            if (href === 'index.html' && (currentPath === '/' || currentPath.endsWith('index.html'))) {
+                link.classList.add('active');
+            }
+        });
+        
+        console.log('IT Header Loaded | Mobile menu buttons perfectly aligned');
+    })();
+</script>
+
+</body>
+</html>

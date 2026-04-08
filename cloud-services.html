@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Cloud Services | Stackly IT Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #faf8f5;
+            color: #1a1a2e;
+            line-height: 1.5;
+            overflow-x: hidden;
+            width: 100%;
+            padding-top: 100px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+        }
+
+        section {
+            padding: 80px 0;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Light/Neutral Theme */
+        section:nth-child(even) {
+            background: #ffffff;
+        }
+        section:nth-child(odd) {
+            background: #faf8f5;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: 16px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #eef2ff;
+            color: #4f46e5;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            background: #4f46e5;
+            color: white;
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        /* Button Styles with Enhanced Hover */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #4f46e5;
+            color: white;
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            background: #6366f1;
+            transform: translateY(-4px) scale(1.02);
+            gap: 12px;
+            box-shadow: 0 12px 25px rgba(79,70,229,0.35);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #cbd5e1;
+            color: #1a1a2e;
+        }
+
+        .btn-outline:hover {
+            background: #f8fafc;
+            border-color: #4f46e5;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(79,70,229,0.1);
+        }
+
+        /* SECTION 1: HERO with Background Image */
+        .hero-section {
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        color: white;
+        background-size: cover;
+        background-position: center;
+    }
+    .hero-section h1 { 
+        color: white; 
+    }
+    .hero-section .badge { 
+        background: rgba(79,70,229,0.2); 
+        color: #a5b4fc; 
+    }
+        /* SECTION 2: 3-COLUMN PLAN CARDS */
+        .plan-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .plan-card {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 24px;
+            text-align: center;
+            border: 1px solid #eef2ff;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .plan-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #4f46e5, #818cf8);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        .plan-card:hover::before {
+            transform: scaleX(1);
+        }
+        .plan-card:hover {
+            transform: translateY(-12px);
+            border-color: #c7d2fe;
+            box-shadow: 0 25px 40px rgba(79,70,229,0.15);
+        }
+        .plan-icon {
+            width: 70px;
+            height: 70px;
+            background: #eef2ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .plan-card:hover .plan-icon {
+            background: #4f46e5;
+            transform: scale(1.1) rotate(5deg);
+        }
+        .plan-card:hover .plan-icon i {
+            color: white;
+        }
+        .plan-icon i { font-size: 1.8rem; color: #4f46e5; transition: all 0.3s ease; }
+        .price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #4f46e5;
+            margin: 15px 0;
+        }
+
+        /* SECTION 3: SPLIT LAYOUT (Image + Accordion) */
+        .split-accordion {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .split-accordion img {
+            transition: all 0.4s ease;
+        }
+        .split-accordion img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+        }
+        .accordion-item {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 15px;
+            border: 1px solid #eef2ff;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .accordion-item:hover {
+            border-color: #c7d2fe;
+            transform: translateX(5px);
+        }
+        .accordion-header {
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            background: white;
+            transition: all 0.3s ease;
+        }
+        .accordion-header:hover {
+            background: #f8fafc;
+            color: #4f46e5;
+            padding-left: 25px;
+        }
+        .accordion-content {
+            padding: 0 20px 20px;
+            display: none;
+            color: #475569;
+        }
+
+        /* SECTION 4: STATS ROW with Icons */
+        .stats-row-icons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            text-align: center;
+        }
+        .stat-icon-card {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 20px;
+            border: 1px solid #eef2ff;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .stat-icon-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: #c7d2fe;
+            box-shadow: 0 15px 30px rgba(79,70,229,0.1);
+        }
+        .stat-icon-card i {
+            font-size: 2rem;
+            color: #4f46e5;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        .stat-icon-card:hover i {
+            transform: scale(1.15);
+            color: #6366f1;
+        }
+
+        /* SECTION 5: FEATURE SHOWCASE (Horizontal Scroll) */
+        .feature-scroll {
+            display: flex;
+            gap: 25px;
+            overflow-x: auto;
+            padding: 20px 0;
+            scrollbar-width: thin;
+        }
+        .feature-scroll-card {
+            min-width: 320px;
+            background: white;
+            padding: 28px;
+            border-radius: 24px;
+            border: 1px solid #eef2ff;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .feature-scroll-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: #c7d2fe;
+            box-shadow: 0 20px 35px rgba(79,70,229,0.12);
+        }
+        .feature-scroll-card i {
+            transition: all 0.3s ease;
+        }
+        .feature-scroll-card:hover i {
+            transform: scale(1.2);
+            color: #6366f1;
+        }
+        .feature-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+        .feature-scroll::-webkit-scrollbar-track {
+            background: #eef2ff;
+            border-radius: 10px;
+        }
+        .feature-scroll::-webkit-scrollbar-thumb {
+            background: #4f46e5;
+            border-radius: 10px;
+        }
+
+        /* SECTION 6: VIDEO + CTA with Play/Pause */
+        .video-cta {
+            background: white;
+            border-radius: 32px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            transition: all 0.3s ease;
+        }
+        .video-cta:hover {
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .video-wrapper {
+            position: relative;
+            background: #1a1a2e;
+        }
+        .video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        .play-pause-btn {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .play-pause-btn:hover {
+            background: #4f46e5;
+            transform: scale(1.1);
+        }
+        .cta-content {
+            padding: 50px;
+            background: #4f46e5;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .cta-content:hover {
+            background: #6366f1;
+        }
+
+        /* SECTION 7: MIGRATION PROCESS */
+        .migration-steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .step {
+            flex: 1;
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 20px;
+            border: 1px solid #eef2ff;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .step:hover {
+            transform: translateY(-8px);
+            border-color: #c7d2fe;
+            box-shadow: 0 15px 30px rgba(79,70,229,0.1);
+        }
+        .step-number-circle {
+            width: 45px;
+            height: 45px;
+            background: #4f46e5;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+        .step:hover .step-number-circle {
+            transform: scale(1.1);
+            background: #6366f1;
+        }
+
+        /* SECTION 8: TESTIMONIAL GRID */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 24px;
+            border: 1px solid #eef2ff;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .testimonial-card:hover {
+            transform: translateY(-8px) translateX(5px);
+            border-color: #c7d2fe;
+            box-shadow: 0 20px 35px rgba(79,70,229,0.12);
+        }
+        .testimonial-card i {
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover i {
+            transform: scale(1.2);
+            color: #6366f1;
+        }
+
+        /* SECTION 9: PARTNER LOGOS */
+        .partner-logos {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+        }
+        .partner-logo {
+            background: white;
+            padding: 20px 35px;
+            border-radius: 50px;
+            border: 1px solid #eef2ff;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            text-align: center;
+        }
+        .partner-logo:hover {
+            transform: translateY(-8px) scale(1.05);
+            border-color: #c7d2fe;
+            box-shadow: 0 15px 30px rgba(79,70,229,0.12);
+        }
+        .partner-logo i {
+            transition: all 0.3s ease;
+        }
+        .partner-logo:hover i {
+            transform: scale(1.2);
+            color: #6366f1;
+        }
+
+        /* SECTION 10: CTA BANNER */
+        .cta-banner {
+            background: linear-gradient(135deg, #1a1a2e, #2d2d5e);
+            border-radius: 32px;
+            padding: 60px;
+            text-align: center;
+            color: white;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .cta-banner:hover {
+            transform: scale(1.01);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.2);
+        }
+
+        /* Animation Classes - Left/Right Scroll */
+        .animate-left {
+            opacity: 0;
+            transform: translateX(-70px);
+            transition: all 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .animate-right {
+            opacity: 0;
+            transform: translateX(70px);
+            transition: all 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .animate-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .animate-left.show, .animate-right.show, .animate-up.show {
+            opacity: 1;
+            transform: translateX(0);
+            transform: translateY(0);
+        }
+
+        /* Counter Animation */
+        .counter {
+            display: inline-block;
+        }
+
+        @media (max-width: 900px) {
+            .plan-grid, .split-accordion, .stats-row-icons, .testimonial-grid, .migration-steps {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            .video-cta { grid-template-columns: 1fr; }
+            .feature-scroll-card { min-width: 280px; }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            section { padding: 50px 0; }
+            .cta-banner { padding: 40px 20px; }
+            .container { padding: 0 20px; }
+            .partner-logos { justify-content: center; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 16px; }
+            .plan-card { padding: 25px 20px; }
+        }
+
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER PLACEHOLDER - Header will load here -->
+<div id="header-placeholder"></div>
+
+    <!-- ===== HTML SECTION (inline CSS only for background image) ===== -->
+<section class="hero-section" style="background: linear-gradient(rgba(26,26,46,0.75), rgba(26,26,46,0.85)), url('it1.webp')center/cover;">
+    <div class="container">
+        <div class="badge animate-up">Cloud Services</div>
+        <h1 class="animate-left">Cloud Services<br>for Modern Enterprises</h1>
+        <p class="animate-left">AWS, Azure, GCP — multi-cloud orchestration, serverless architecture, and cloud-native solutions at enterprise scale.</p>
+        <a href="404.html" class="btn animate-up">Start Cloud Journey →</a>
+    </div>
+</section>
+
+
+    <!-- SECTION 2: CLOUD PLANS -->
+    <section>
+        <div class="container">
+            <div class="badge animate-left">Cloud Solutions</div>
+            <h2 class="animate-left">Choose Your Cloud Path</h2>
+            <div class="plan-grid">
+                <div class="plan-card animate-up"><div class="plan-icon"><i class="fab fa-aws"></i></div><h3>AWS Cloud</h3><div class="price">Pay-as-you-go</div><p style="color:#475569;">EC2, S3, RDS, Lambda, and 200+ services with enterprise support.</p><a href="404.html" class="btn-outline btn" style="margin-top:20px;">Explore AWS →</a></div>
+                <div class="plan-card animate-up"><div class="plan-icon"><i class="fab fa-microsoft"></i></div><h3>Azure Cloud</h3><div class="price">Pay-as-you-go</div><p style="color:#475569;">Virtual Machines, Functions, AI services, and hybrid capabilities.</p><a href="404.html" class="btn-outline btn" style="margin-top:20px;">Explore Azure →</a></div>
+                <div class="plan-card animate-up"><div class="plan-icon"><i class="fab fa-google"></i></div><h3>Google Cloud</h3><div class="price">Pay-as-you-go</div><p style="color:#475569;">Compute Engine, BigQuery, Kubernetes, and AI/ML platform.</p><a href="404.html" class="btn-outline btn" style="margin-top:20px;">Explore GCP →</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: SPLIT LAYOUT (Image + Accordion) -->
+    <section>
+        <div class="container split-accordion">
+            <div class="animate-left"><img src="it2.webp" style="width:100%; border-radius: 24px;"></div>
+            <div class="animate-right"><div class="badge">Cloud Benefits</div><h2>Why Choose Our Cloud Platform</h2>
+                <div class="accordion-item"><div class="accordion-header">Scalability <i class="fas fa-chevron-down"></i></div><div class="accordion-content">Auto-scaling resources based on demand. Handle traffic spikes seamlessly without over-provisioning. Scale from zero to millions of users.</div></div>
+                <div class="accordion-item"><div class="accordion-header">Security & Compliance <i class="fas fa-chevron-down"></i></div><div class="accordion-content">Enterprise-grade security with encryption, IAM, and compliance certifications (SOC2, ISO, GDPR, HIPAA).</div></div>
+                <div class="accordion-item"><div class="accordion-header">Cost Optimization <i class="fas fa-chevron-down"></i></div><div class="accordion-content">Pay only for what you use. Savings plans, reserved instances, and automated cost monitoring with AI recommendations.</div></div>
+                <a href="404.html" class="btn" style="margin-top:20px;">Learn More →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: STATS ROW with Icons -->
+    <section>
+        <div class="container">
+            <div class="badge animate-up">Cloud Metrics</div>
+            <h2 class="animate-up">Global Cloud Footprint</h2>
+            <div class="stats-row-icons">
+                <div class="stat-icon-card animate-up"><i class="fas fa-globe"></i><div class="stat-number-lg"><span class="counter" data-target="35">0</span>+</div><p>Regions Worldwide</p></div>
+                <div class="stat-icon-card animate-up"><i class="fas fa-server"></i><div class="stat-number-lg"><span class="counter" data-target="200">0</span>+</div><p>Availability Zones</p></div>
+                <div class="stat-icon-card animate-up"><i class="fas fa-charging-station"></i><div class="stat-number-lg"><span class="counter" data-target="9999">0</span>%</div><p>Uptime SLA</p></div>
+                <div class="stat-icon-card animate-up"><i class="fas fa-users"></i><div class="stat-number-lg"><span class="counter" data-target="50000">0</span>+</div><p>Active Customers</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: FEATURE SHOWCASE (Horizontal Scroll) -->
+    <section>
+        <div class="container">
+            <div class="badge animate-left">Cloud Capabilities</div>
+            <h2 class="animate-left">Enterprise Cloud Features</h2>
+            <div class="feature-scroll">
+                <div class="feature-scroll-card animate-right"><i class="fas fa-code-branch" style="font-size:2rem; color:#4f46e5;"></i><h3>CI/CD Pipeline</h3><p>Automated deployment with GitHub Actions, Jenkins, and GitLab. Streamline workflow.</p><a href="404.html" style="color:#4f46e5;">Learn More →</a></div>
+                <div class="feature-scroll-card animate-right"><i class="fas fa-robot" style="font-size:2rem; color:#4f46e5;"></i><h3>AI/ML Platform</h3><p>Pre-trained models, custom training, and MLOps tools for your machine learning journey.</p><a href="404.html" style="color:#4f46e5;">Learn More →</a></div>
+                <div class="feature-scroll-card animate-right"><i class="fas fa-shield-alt" style="font-size:2rem; color:#4f46e5;"></i><h3>Cloud Security</h3><p>WAF, DDoS protection, threat detection, and 24/7 security monitoring.</p><a href="404.html" style="color:#4f46e5;">Learn More →</a></div>
+                <div class="feature-scroll-card animate-right"><i class="fas fa-database" style="font-size:2rem; color:#4f46e5;"></i><h3>Managed Databases</h3><p>RDS, Aurora, DynamoDB with automated backups, replication, and scaling.</p><a href="404.html" style="color:#4f46e5;">Learn More →</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: VIDEO + CTA with Play/Pause Button -->
+    <section>
+        <div class="container">
+            <div class="video-cta animate-up">
+                <div class="video-wrapper">
+                    <video id="cloudVideo" poster="it3.webp">
+                        <source src="itv4.mp4" type="video/mp4">
+                    </video>
+                    <button class="play-pause-btn" id="videoPlayPauseBtn"><i class="fas fa-play"></i></button>
+                </div>
+                <div class="cta-content"><i class="fas fa-cloud-upload-alt" style="font-size:3rem; margin-bottom:20px;"></i><h2 style="color:white;">See Cloud Migration in Action</h2><p style="margin:20px 0;">Watch how we migrated 500+ workloads to the cloud with zero downtime and 99.99% availability.</p><a href="404.html" class="btn" style="background:white; color:#4f46e5;">Watch Demo →</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: MIGRATION PROCESS -->
+    <section>
+        <div class="container">
+            <div class="badge animate-up">Migration Process</div>
+            <h2 class="animate-up">Cloud Adoption Framework</h2>
+            <div class="migration-steps">
+                <div class="step animate-left"><div class="step-number-circle">1</div><h3>Assess</h3><p style="color:#475569;">Workload analysis and cloud readiness assessment with TCO calculation.</p><a href="404.html" style="color:#4f46e5;">→</a></div>
+                <div class="step animate-up"><div class="step-number-circle">2</div><h3>Plan</h3><p style="color:#475569;">Migration strategy and architecture design with timeline and milestones.</p><a href="404.html" style="color:#4f46e5;">→</a></div>
+                <div class="step animate-up"><div class="step-number-circle">3</div><h3>Migrate</h3><p style="color:#475569;">Lift-shift, re-platform, or refactor workloads with zero <br> downtime.</p><a href="404.html" style="color:#4f46e5;">→</a></div>
+                <div class="step animate-right"><div class="step-number-circle">4</div><h3>Optimize</h3><p style="color:#475569;">Cost optimization, performance tuning, and continuous improvement.</p><a href="404.html" style="color:#4f46e5;">→</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: TESTIMONIAL GRID -->
+    <section>
+        <div class="container">
+            <div class="badge animate-left">Client Success</div>
+            <h2 class="animate-left">What Our Clients Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card animate-right"><i class="fas fa-quote-left" style="color:#4f46e5; font-size:1.5rem;"></i><p style="margin:15px 0;">"Stackly IT helped us migrate 200+ applications to AWS in 8 weeks with zero downtime. Their expertise and support are unmatched."</p><h4>— David Chen, CTO</h4><p style="color:#475569;">Global Financial Services</p><a href="404.html" style="color:#4f46e5;">Read Case Study →</a></div>
+                <div class="testimonial-card animate-left"><i class="fas fa-quote-left" style="color:#4f46e5; font-size:1.5rem;"></i><p style="margin:15px 0;">"Their cloud cost optimization saved us 35% annually. The managed Kubernetes service and support team are exceptional."</p><h4>— Sarah Johnson, VP Eng</h4><p style="color:#475569;">Global Retail</p><a href="404.html" style="color:#4f46e5;">Read Case Study →</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 9: PARTNER LOGOS -->
+    <section>
+        <div class="container">
+            <div class="badge animate-up">Trusted Partners</div>
+            <h2 class="animate-up">Cloud Ecosystem</h2>
+            <div class="partner-logos">
+                <div class="partner-logo animate-scale"><i class="fab fa-aws fa-2x"></i><p>AWS Premier</p></div>
+                <div class="partner-logo animate-scale"><i class="fab fa-microsoft fa-2x"></i><p>Azure Expert</p></div>
+                <div class="partner-logo animate-scale"><i class="fab fa-google fa-2x"></i><p>GCP Partner</p></div>
+                <div class="partner-logo animate-scale"><i class="fab fa-docker fa-2x"></i><p>Docker</p></div>
+                <div class="partner-logo animate-scale"><i class="fab fa-kubernetes fa-2x"></i><p>K8s Certified</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 10: CTA BANNER -->
+    <section>
+        <div class="container">
+            <div class="cta-banner animate-up">
+                <h2 style="color:white;">Ready to Start Your Cloud Journey?</h2>
+                <p style="margin: 20px 0; opacity:0.9;">Get a free cloud assessment and migration roadmap from our certified cloud architects.</p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="404.html" class="btn" style="background: white; color:#1a1a2e;">Get Free Assessment →</a>
+                    <a href="404.html" class="btn-outline btn" style="background:transparent; border-color:white; color:white;">Contact Cloud Experts →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- FOOTER PLACEHOLDER - Footer will load here -->
+<div id="footer-placeholder"></div>
+
+    <script>
+
+        // Load Header and Footer dynamically
+document.addEventListener('DOMContentLoaded', function() {
+    // Load Header
+    fetch('header.html')
+        .then(response => {
+            if (!response.ok) throw new Error('Header not found');
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('header-placeholder').innerHTML = data;
+            // Initialize header functionality after loading
+            initHeader();
+        })
+        .catch(error => {
+            console.error('Error loading header:', error);
+            document.getElementById('header-placeholder').innerHTML = '<div style="background:#ff6b6b; color:white; padding:10px; text-align:center;">Header failed to load</div>';
+        });
+
+    // Load Footer
+    fetch('footer.html')
+        .then(response => {
+            if (!response.ok) throw new Error('Footer not found');
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
+            // Initialize footer functionality after loading
+            initFooter();
+        })
+        .catch(error => {
+            console.error('Error loading footer:', error);
+            document.getElementById('footer-placeholder').innerHTML = '<div style="background:#1a1a2e; color:#a0aec0; padding:20px; text-align:center;">Footer failed to load</div>';
+        });
+});
+
+// Initialize Header Functions (Hamburger Menu, Navigation, etc.)
+function initHeader() {
+    // Hamburger Menu Toggle
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (hamburgerBtn && mobileMenu) {
+        hamburgerBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+    }
+
+    // Desktop Navigation Buttons
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const page = this.getAttribute('data-page');
+            if (page) {
+                window.location.href = page + '.html';
+            }
+        });
+    });
+
+    // Mobile Navigation Buttons (without dropdowns)
+    document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const page = this.getAttribute('data-page');
+            if (page) {
+                window.location.href = page + '.html';
+            }
+            // Close mobile menu after click
+            if (hamburgerBtn && mobileMenu) {
+                hamburgerBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    // Desktop Login Button
+    const loginBtn = document.getElementById('loginBtn');
+    if (loginBtn) {
+        loginBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'login.html';
+        });
+    }
+
+    // Desktop Get Started Button
+    const getStartedBtn = document.getElementById('getStartedBtn');
+    if (getStartedBtn) {
+        getStartedBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'signup.html';
+        });
+    }
+
+    // ===== IMPORTANT: Mobile Login & Get Started Buttons =====
+    const mobileLoginBtn = document.getElementById('mobileLoginBtn');
+    if (mobileLoginBtn) {
+        // Remove any existing listeners to avoid duplicates
+        const newMobileLoginBtn = mobileLoginBtn.cloneNode(true);
+        mobileLoginBtn.parentNode.replaceChild(newMobileLoginBtn, mobileLoginBtn);
+        
+        newMobileLoginBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = 'login.html';
+        });
+    }
+
+    const mobileGetStartedBtn = document.getElementById('mobileGetStartedBtn');
+    if (mobileGetStartedBtn) {
+        // Remove any existing listeners to avoid duplicates
+        const newMobileGetStartedBtn = mobileGetStartedBtn.cloneNode(true);
+        mobileGetStartedBtn.parentNode.replaceChild(newMobileGetStartedBtn, mobileGetStartedBtn);
+        
+        newMobileGetStartedBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = 'signup.html';
+        });
+    }
+
+    // Logo Click
+    const logoSect = document.querySelector('.logo-section');
+    if (logoSect) {
+        logoSect.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'index.html';
+        });
+    }
+
+    console.log('Header initialized - All buttons working');
+}
+
+// Initialize Footer Functions (Newsletter, etc.)
+function initFooter() {
+    const subscribeBtn = document.getElementById('footerSubscribeBtn');
+    const emailInput = document.getElementById('footerEmail');
+    const emailError = document.getElementById('footerEmailError');
+
+    function validateEmail(email) {
+        return /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/.test(email);
+    }
+
+    if (subscribeBtn) {
+        subscribeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const email = emailInput.value.trim();
+            
+            if (!email) {
+                emailError.classList.add('show');
+                emailError.textContent = 'Please enter your email address';
+                emailInput.classList.add('error');
+            } else if (!validateEmail(email)) {
+                emailError.classList.add('show');
+                emailError.textContent = 'Please enter a valid email address';
+                emailInput.classList.add('error');
+            } else {
+                emailError.classList.remove('show');
+                emailInput.classList.remove('error');
+                window.location.href = '404.html';
+            }
+        });
+    }
+
+    if (emailInput) {
+        emailInput.addEventListener('input', function() {
+            if (this.value.trim()) {
+                emailError.classList.remove('show');
+                this.classList.remove('error');
+            }
+        });
+    }
+}
+
+// Handle Window Resize (Close mobile menu on resize)
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (hamburgerBtn && mobileMenu) {
+            hamburgerBtn.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+});
+
+        //=====================================================
+        // Scroll Animation Observer for Left/Right animations
+        const animateElements = document.querySelectorAll('.animate-left, .animate-right, .animate-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+        animateElements.forEach(el => observer.observe(el));
+
+        // Continuous Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const startCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const current = parseInt(counter.innerText);
+                    const increment = Math.ceil(target / 150);
+                    if (current < target) {
+                        counter.innerText = current + increment;
+                        setTimeout(updateCount, 20);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+        };
+        const statsSection = document.querySelector('.stats-row-icons')?.closest('section');
+        if (statsSection) {
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        startCounters();
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+            counterObserver.observe(statsSection);
+        }
+
+        // Accordion Toggle with animation
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('i');
+                if (content.style.display === 'block') {
+                    content.style.display = 'none';
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    content.style.display = 'block';
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        // Video Play/Pause Functionality
+        const video = document.getElementById('cloudVideo');
+        const playPauseBtn = document.getElementById('videoPlayPauseBtn');
+        
+        if (video && playPauseBtn) {
+            playPauseBtn.addEventListener('click', () => {
+                if (video.paused) {
+                    video.play();
+                    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    video.pause();
+                    playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+            
+            video.addEventListener('play', () => {
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            });
+            
+            video.addEventListener('pause', () => {
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+        }
+
+        console.log("Cloud Services | Left/Right scroll animations | Video play/pause functionality | Enhanced hover effects | All buttons → 404.html");
+    </script>
+</body>
+</html>

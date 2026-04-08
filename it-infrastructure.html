@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>IT Infrastructure | Stackly IT Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #faf8f5;
+            color: #1a1a2e;
+            line-height: 1.5;
+            overflow-x: hidden;
+            width: 100%;
+            padding-top: 100px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+        }
+
+        section {
+            padding: 80px 0;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Light/Neutral Theme */
+        section:nth-child(even) {
+            background: #ffffff;
+        }
+        section:nth-child(odd) {
+            background: #faf8f5;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: 16px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #eef2ff;
+            color: #4f46e5;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            background: #4f46e5;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #4f46e5;
+            color: white;
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #6366f1;
+            transform: translateY(-3px);
+            gap: 12px;
+            box-shadow: 0 8px 20px rgba(79,70,229,0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #cbd5e1;
+            color: #1a1a2e;
+        }
+
+        .btn-outline:hover {
+            background: #f8fafc;
+            border-color: #4f46e5;
+            transform: translateY(-3px);
+        }
+
+
+    /*  hero section */
+    .hero-section {
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        color: white;
+        position: relative;
+        width: 100%;
+    }
+    
+    .hero-section .container {
+        position: relative;
+        z-index: 2;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 24px;
+        width: 100%;
+    }
+    
+    .hero-section h1 {
+        color: white;
+        font-size: 3.8rem;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 20px;
+    }
+    
+    .hero-section .badge {
+        background: rgba(79,70,229,0.2);
+        color: #a5b4fc;
+        display: inline-block;
+        padding: 6px 16px;
+        border-radius: 30px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 24px;
+    }
+    
+    .hero-section p {
+        color: rgba(255,255,255,0.9);
+        font-size: 1.2rem;
+        max-width: 550px;
+        margin-bottom: 32px;
+    }
+    
+    .hero-section .btn {
+        background: #4f46e5;
+        color: white;
+        padding: 14px 32px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+    }
+    
+    .hero-section .btn:hover {
+        background: #6366f1;
+        transform: translateY(-3px);
+        gap: 12px;
+    }
+    
+    @media (max-width: 768px) {
+        .hero-section h1 {
+            font-size: 2.5rem;
+        }
+        .hero-section p {
+            font-size: 1rem;
+        }
+        .hero-section {
+            min-height: 70vh;
+        }
+    }
+
+        /* SECTION 2: MARQUEE STATS */
+        .marquee-stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 60px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+            border: 1px solid #eef2ff;
+        }
+        .stat-item {
+            text-align: center;
+            transition: all 0.3s ease;
+            padding: 15px 25px;
+            border-radius: 30px;
+        }
+        .stat-item:hover {
+            transform: translateY(-5px);
+            background: #f8fafc;
+        }
+        .stat-number-lg {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #4f46e5;
+        }
+
+        /* SECTION 3: ICON GRID */
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .icon-card {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 24px;
+            text-align: center;
+            border: 1px solid #eef2ff;
+            transition: all 0.3s ease;
+        }
+        .icon-card:hover {
+            transform: translateY(-8px);
+            border-color: #c7d2fe;
+            box-shadow: 0 15px 30px rgba(79,70,229,0.1);
+        }
+        .icon-circle {
+            width: 70px;
+            height: 70px;
+            background: #eef2ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            transition: all 0.3s ease;
+        }
+        .icon-card:hover .icon-circle {
+            background: #4f46e5;
+            transform: scale(1.05);
+        }
+        .icon-card:hover .icon-circle i {
+            color: white;
+        }
+        .icon-circle i { font-size: 1.8rem; color: #4f46e5; transition: all 0.3s ease; }
+
+        /* SECTION 4: SPLIT BANNER */
+        .split-banner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .video-box {
+            background: #1a1a2e;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .video-box:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .video-box video { width: 100%; display: block; }
+
+        /* SECTION 5: VERTICAL TIMELINE */
+        .vertical-timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        .timeline-content {
+            margin-bottom: 40px;
+            padding-left: 30px;
+            border-left: 2px solid #eef2ff;
+            transition: all 0.3s ease;
+        }
+        .timeline-content:hover {
+            border-left-color: #4f46e5;
+            transform: translateX(8px);
+        }
+
+        /* SECTION 6: 3D STATS CARDS */
+        .stats-3d {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .stats-3d-card {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            border-bottom: 3px solid #4f46e5;
+            transition: all 0.3s ease;
+        }
+        .stats-3d-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(79,70,229,0.15);
+        }
+
+        /* SECTION 7: TESTIMONIAL ROW */
+        .testimonial-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 24px;
+            border: 1px solid #eef2ff;
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: #c7d2fe;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        /* SECTION 8: GALLERY MASONRY */
+        .gallery-masonry {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        .masonry-item {
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #eef2ff;
+            transition: all 0.3s ease;
+        }
+        .masonry-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: #c7d2fe;
+        }
+        .masonry-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .masonry-item:hover img {
+            transform: scale(1.05);
+        }
+        .masonry-item .info { padding: 20px; }
+
+        /* SECTION 9: FAQ ACCORDION */
+        .faq-item {
+            border-bottom: 1px solid #eef2ff;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+        }
+        .faq-item:hover {
+            padding-left: 15px;
+            background: rgba(79,70,229,0.02);
+        }
+        .faq-question {
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            transition: color 0.3s ease;
+        }
+        .faq-question:hover {
+            color: #4f46e5;
+        }
+        .faq-answer {
+            margin-top: 12px;
+            color: #475569;
+            display: none;
+        }
+
+        /* SECTION 10: CTA */
+        .cta-banner {
+            background: linear-gradient(135deg, #1a1a2e, #2d2d5e);
+            border-radius: 32px;
+            padding: 60px;
+            text-align: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .cta-banner:hover {
+            transform: scale(1.01);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        /* Animation Classes */
+        .animate-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: all 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .animate-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: all 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .animate-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .animate-left.show, .animate-right.show, .animate-up.show {
+            opacity: 1;
+            transform: translateX(0);
+            transform: translateY(0);
+        }
+
+        /* Counter Animation */
+        .counter {
+            display: inline-block;
+        }
+
+        /* Responsive - Fixed horizontal scroll issue */
+        @media (max-width: 900px) {
+            .icon-grid, .stats-3d, .gallery-masonry, .testimonial-row, .split-banner {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            section { padding: 50px 0; }
+            .marquee-stats { 
+                flex-direction: column; 
+                align-items: center; 
+                border-radius: 40px;
+                gap: 20px;
+            }
+            .cta-banner { padding: 40px 20px; }
+            .container { padding: 0 20px; }
+            .vertical-timeline { padding-left: 20px; }
+            .timeline-content { padding-left: 15px; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 16px; }
+            .icon-card { padding: 25px 20px; }
+            .stats-3d-card { padding: 20px; }
+            .stat-number-lg { font-size: 2rem; }
+        }
+
+        /* Ensure no horizontal overflow */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER PLACEHOLDER - Header will load here -->
+<div id="header-placeholder"></div>
+
+    <!-- Hero Section - Inline CSS only for background image -->
+<section class="hero-section" style="background: linear-gradient(rgba(26,26,46,0.75), rgba(26,26,46,0.85)), url('it12.webp'); background-size: cover; background-position: center;">
+    <div class="container">
+        <div class="badge animate-up">IT Infrastructure</div>
+        <h1 class="animate-left">Enterprise-Grade<br>IT Infrastructure</h1>
+        <p class="animate-left">High-performance data centers, global edge networks, and resilient architecture powering mission-critical operations.</p>
+        <a href="404.html" class="btn animate-up">Explore Infrastructure →</a>
+    </div>
+</section>
+
+    <!-- SECTION 2: MARQUEE STATS with Continuous Counter -->
+    <section>
+        <div class="container">
+            <div class="marquee-stats">
+                <div class="stat-item animate-up"><div class="stat-number-lg"><span class="counter" data-target="287">0</span>+</div><div>Global PoPs</div></div>
+                <div class="stat-item animate-up"><div class="stat-number-lg"><span class="counter" data-target="9999">0</span><span style="font-size:1.8rem;">%</span></div><div>Uptime SLA</div></div>
+                <div class="stat-item animate-up"><div class="stat-number-lg"><span class="counter" data-target="10">0</span><span style="font-size:1.8rem;">ms</span></div><div>Avg Latency</div></div>
+                <div class="stat-item animate-up"><div class="stat-number-lg"><span class="counter" data-target="52">0</span>+</div><div>Data Centers</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: ICON GRID with Images -->
+    <section>
+        <div class="container">
+            <div class="badge animate-left">Core Components</div>
+            <h2 class="animate-left">Infrastructure Building Blocks</h2>
+            <div class="icon-grid">
+                <div class="icon-card animate-right"><img src="it12.webp" style="width:100%; height:160px; object-fit:cover; border-radius:16px; margin-bottom:20px;"><div class="icon-circle"><i class="fas fa-database"></i></div><h3>Hyperconverged Storage</h3><p style="color:#475569;">Software-defined storage with petabyte-scale capacity and 99.999% durability.</p><a href="404.html" style="color:#4f46e5; margin-top:16px; display:inline-block;">Learn More →</a></div>
+                <div class="icon-card animate-left"><img src="it13.webp" style="width:100%; height:160px; object-fit:cover; border-radius:16px; margin-bottom:20px;"><div class="icon-circle"><i class="fas fa-network-wired"></i></div><h3>SD-WAN Fabric</h3><p style="color:#475569;">Intelligent networking with automated failover and sub-10ms global latency.</p><a href="404.html" style="color:#4f46e5; margin-top:16px; display:inline-block;">Learn More →</a></div>
+                <div class="icon-card animate-right"><img src="it14.webp" style="width:100%; height:160px; object-fit:cover; border-radius:16px; margin-bottom:20px;"><div class="icon-circle"><i class="fas fa-microchip"></i></div><h3>Edge Computing</h3><p style="color:#475569;">Distributed compute nodes for sub-5ms latency and real-time data processing.</p><a href="404.html" style="color:#4f46e5; margin-top:16px; display:inline-block;">Learn More →</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: SPLIT BANNER with Video -->
+    <section>
+        <div class="container split-banner">
+            <div class="animate-left"><div class="badge">Global Network</div><h2>Worldwide Edge Backbone</h2><p style="color:#475569; margin:20px 0;">200+ edge nodes delivering sub-10ms latency for real-time applications. AI-powered traffic routing and automated failover across 5 continents.</p><a href="404.html" class="btn-outline btn">View Network Map →</a></div>
+            <div class="video-box animate-right"><video controls poster="it15.webp"><source src="itv3.mp4" type="video/mp4"></video></div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: VERTICAL TIMELINE -->
+    <section>
+        <div class="container">
+            <div class="badge animate-left">How It Works</div>
+            <h2 class="animate-left">Infrastructure Lifecycle</h2>
+            <div class="vertical-timeline">
+                <div class="timeline-content animate-right"><div style="font-weight:800; color:#4f46e5;">01. Infrastructure Assessment</div><p style="color:#475569;">Comprehensive audit, capacity planning, and security posture analysis across your entire stack.</p><a href="404.html" style="color:#4f46e5;">Learn More →</a></div>
+                <div class="timeline-content animate-left"><div style="font-weight:800; color:#4f46e5;">02. Architecture Design</div><p style="color:#475569;">Custom solution with redundancy, failover, and disaster recovery built into every layer.</p><a href="404.html" style="color:#4f46e5;">Learn More →</a></div>
+                <div class="timeline-content animate-right"><div style="font-weight:800; color:#4f46e5;">03. Zero-Downtime Deployment</div><p style="color:#475569;">Phased migration with automated provisioning, validation, and rollback capabilities.</p><a href="404.html" style="color:#4f46e5;">Learn More →</a></div>
+                <div class="timeline-content animate-left"><div style="font-weight:800; color:#4f46e5;">04. AI-Driven Optimization</div><p style="color:#475569;">Real-time monitoring, predictive scaling, automated remediation, and continuous improvement.</p><a href="404.html" style="color:#4f46e5;">Learn More →</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: 3D STATS CARDS -->
+    <section>
+        <div class="container">
+            <div class="badge animate-up">Performance Metrics</div>
+            <h2 class="animate-up">Infrastructure Excellence</h2>
+            <div class="stats-3d">
+                <div class="stats-3d-card animate-left"><div class="stat-number-lg">99.999%</div><p>Availability SLA</p></div>
+                <div class="stats-3d-card animate-up"><div class="stat-number-lg">10ms</div><p>Global Latency</p></div>
+                <div class="stats-3d-card animate-up"><div class="stat-number-lg">15min</div><p>RTO/RPO</p></div>
+                <div class="stats-3d-card animate-right"><div class="stat-number-lg">24/7</div><p>Support Coverage</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: TESTIMONIAL ROW -->
+    <section>
+        <div class="container">
+            <div class="badge animate-left">Trusted Globally</div>
+            <h2 class="animate-left">What Our Clients Say</h2>
+            <div class="testimonial-row">
+                <div class="testimonial-card animate-right"><i class="fas fa-quote-left" style="color:#4f46e5; margin-bottom:16px; display:block;"></i><p>"Stackly IT transformed our infrastructure from fragmented legacy systems to a unified, resilient global platform. Their edge network reduced our latency by 60%."</p><h4 style="margin-top:20px;">— Michael Chen, CTO</h4><p style="color:#475569; font-size:0.85rem;">Global Financial Services</p><a href="404.html" style="color:#4f46e5; margin-top:12px; display:inline-block;">Read Case Study →</a></div>
+                <div class="testimonial-card animate-left"><i class="fas fa-quote-left" style="color:#4f46e5; margin-bottom:16px; display:block;"></i><p>"The zero-trust framework and disaster recovery capabilities gave us complete peace of mind. Implementation was seamless with zero downtime."</p><h4 style="margin-top:20px;">— Sarah Johnson, VP Eng</h4><p style="color:#475569; font-size:0.85rem;">Global Retail</p><a href="404.html" style="color:#4f46e5; margin-top:12px; display:inline-block;">Read Case Study →</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: GALLERY MASONRY with Images -->
+    <section>
+        <div class="container">
+            <div class="badge animate-up">Our Footprint</div>
+            <h2 class="animate-up">Global Data Centers</h2>
+            <div class="gallery-masonry">
+                <div class="masonry-item animate-left"><img src="it1.webp"><div class="info"><h3>Tier-4 Facility</h3><p style="color:#475569;">North America - Virginia, Oregon, Canada</p><a href="404.html" style="color:#4f46e5;">View Details →</a></div></div>
+                <div class="masonry-item animate-up"><img src="it2.webp"><div class="info"><h3>NOC Center</h3><p style="color:#475569;">Europe - London, Frankfurt, Paris</p><a href="404.html" style="color:#4f46e5;">View Details →</a></div></div>
+                <div class="masonry-item animate-right"><img src="it3.webp"><div class="info"><h3>Edge Node</h3><p style="color:#475569;">Asia-Pacific - Singapore, Tokyo, Sydney</p><a href="404.html" style="color:#4f46e5;">View Details →</a></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 9: FAQ ACCORDION -->
+    <section>
+        <div class="container">
+            <div class="badge animate-left">FAQ</div>
+            <h2 class="animate-left">Common Questions</h2>
+            <div>
+                <div class="faq-item animate-right"><div class="faq-question">What industries do you serve? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Finance, healthcare, retail, manufacturing, public sector, and technology companies of all sizes. We have specialized solutions for each vertical.</div><a href="404.html" style="color:#4f46e5; margin-top:12px; display:inline-block;">Read more →</a></div>
+                <div class="faq-item animate-left"><div class="faq-question">How long does implementation take? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Cloud migration: 4-8 weeks. Enterprise deployments: 12-16 weeks depending on complexity and existing infrastructure.</div><a href="404.html" style="color:#4f46e5; margin-top:12px; display:inline-block;">Read more →</a></div>
+                <div class="faq-item animate-right"><div class="faq-question">Is your infrastructure compliant with regulations? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Yes — SOC2, ISO 27001, HIPAA, GDPR, and PCI-DSS certified across all our services and data centers.</div><a href="404.html" style="color:#4f46e5; margin-top:12px; display:inline-block;">Read more →</a></div>
+                <div class="faq-item animate-left"><div class="faq-question">Do you offer 24/7 technical support? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Yes, enterprise clients receive 24/7 dedicated support with 15-minute response SLA and global coverage.</div><a href="404.html" style="color:#4f46e5; margin-top:12px; display:inline-block;">Read more →</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 10: CTA BANNER -->
+    <section>
+        <div class="container">
+            <div class="cta-banner animate-up">
+                <h2 style="color:white;">Ready to Modernize Your Infrastructure?</h2>
+                <p style="margin: 20px 0; opacity:0.9;">Get a free infrastructure assessment and capacity planning consultation from our solution architects.</p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="404.html" class="btn" style="background: white; color:#1a1a2e;">Schedule Assessment →</a>
+                    <a href="404.html" class="btn-outline btn" style="background:transparent; border-color:white; color:white;">Contact Engineers →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- FOOTER PLACEHOLDER - Footer will load here -->
+<div id="footer-placeholder"></div>
+
+    <script>
+
+        // Load Header and Footer dynamically
+document.addEventListener('DOMContentLoaded', function() {
+    // Load Header
+    fetch('header.html')
+        .then(response => {
+            if (!response.ok) throw new Error('Header not found');
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('header-placeholder').innerHTML = data;
+            // Initialize header functionality after loading
+            initHeader();
+        })
+        .catch(error => {
+            console.error('Error loading header:', error);
+            document.getElementById('header-placeholder').innerHTML = '<div style="background:#ff6b6b; color:white; padding:10px; text-align:center;">Header failed to load</div>';
+        });
+
+    // Load Footer
+    fetch('footer.html')
+        .then(response => {
+            if (!response.ok) throw new Error('Footer not found');
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
+            // Initialize footer functionality after loading
+            initFooter();
+        })
+        .catch(error => {
+            console.error('Error loading footer:', error);
+            document.getElementById('footer-placeholder').innerHTML = '<div style="background:#1a1a2e; color:#a0aec0; padding:20px; text-align:center;">Footer failed to load</div>';
+        });
+});
+
+// Initialize Header Functions (Hamburger Menu, Navigation, etc.)
+function initHeader() {
+    // Hamburger Menu Toggle
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (hamburgerBtn && mobileMenu) {
+        hamburgerBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+    }
+
+    // Desktop Navigation Buttons
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const page = this.getAttribute('data-page');
+            if (page) {
+                window.location.href = page + '.html';
+            }
+        });
+    });
+
+    // Mobile Navigation Buttons (without dropdowns)
+    document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const page = this.getAttribute('data-page');
+            if (page) {
+                window.location.href = page + '.html';
+            }
+            // Close mobile menu after click
+            if (hamburgerBtn && mobileMenu) {
+                hamburgerBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    // Desktop Login Button
+    const loginBtn = document.getElementById('loginBtn');
+    if (loginBtn) {
+        loginBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'login.html';
+        });
+    }
+
+    // Desktop Get Started Button
+    const getStartedBtn = document.getElementById('getStartedBtn');
+    if (getStartedBtn) {
+        getStartedBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'signup.html';
+        });
+    }
+
+    // ===== IMPORTANT: Mobile Login & Get Started Buttons =====
+    const mobileLoginBtn = document.getElementById('mobileLoginBtn');
+    if (mobileLoginBtn) {
+        // Remove any existing listeners to avoid duplicates
+        const newMobileLoginBtn = mobileLoginBtn.cloneNode(true);
+        mobileLoginBtn.parentNode.replaceChild(newMobileLoginBtn, mobileLoginBtn);
+        
+        newMobileLoginBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = 'login.html';
+        });
+    }
+
+    const mobileGetStartedBtn = document.getElementById('mobileGetStartedBtn');
+    if (mobileGetStartedBtn) {
+        // Remove any existing listeners to avoid duplicates
+        const newMobileGetStartedBtn = mobileGetStartedBtn.cloneNode(true);
+        mobileGetStartedBtn.parentNode.replaceChild(newMobileGetStartedBtn, mobileGetStartedBtn);
+        
+        newMobileGetStartedBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = 'signup.html';
+        });
+    }
+
+    // Logo Click
+    const logoSect = document.querySelector('.logo-section');
+    if (logoSect) {
+        logoSect.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'index.html';
+        });
+    }
+
+    console.log('Header initialized - All buttons working');
+}
+
+// Initialize Footer Functions (Newsletter, etc.)
+function initFooter() {
+    const subscribeBtn = document.getElementById('footerSubscribeBtn');
+    const emailInput = document.getElementById('footerEmail');
+    const emailError = document.getElementById('footerEmailError');
+
+    function validateEmail(email) {
+        return /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/.test(email);
+    }
+
+    if (subscribeBtn) {
+        subscribeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const email = emailInput.value.trim();
+            
+            if (!email) {
+                emailError.classList.add('show');
+                emailError.textContent = 'Please enter your email address';
+                emailInput.classList.add('error');
+            } else if (!validateEmail(email)) {
+                emailError.classList.add('show');
+                emailError.textContent = 'Please enter a valid email address';
+                emailInput.classList.add('error');
+            } else {
+                emailError.classList.remove('show');
+                emailInput.classList.remove('error');
+                window.location.href = '404.html';
+            }
+        });
+    }
+
+    if (emailInput) {
+        emailInput.addEventListener('input', function() {
+            if (this.value.trim()) {
+                emailError.classList.remove('show');
+                this.classList.remove('error');
+            }
+        });
+    }
+}
+
+// Handle Window Resize (Close mobile menu on resize)
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (hamburgerBtn && mobileMenu) {
+            hamburgerBtn.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+});
+        //=============================================================
+        // Scroll Animation Observer for Left/Right animations
+        const animateElements = document.querySelectorAll('.animate-left, .animate-right, .animate-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+        animateElements.forEach(el => observer.observe(el));
+
+        // Continuous Counter Animation for Section 2
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+
+        const startCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const current = parseInt(counter.innerText);
+                    const increment = Math.ceil(target / speed);
+                    
+                    if (current < target) {
+                        counter.innerText = current + increment;
+                        setTimeout(updateCount, 20);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+        };
+
+        // Trigger counters when stats section is visible
+        const statsSection = document.querySelector('.marquee-stats')?.closest('section');
+        if (statsSection) {
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        startCounters();
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+            counterObserver.observe(statsSection);
+        } else {
+            startCounters();
+        }
+
+        // FAQ Toggle with animation
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                const answer = q.nextElementSibling;
+                const icon = q.querySelector('i');
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    answer.style.display = 'block';
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        console.log("IT Infrastructure | Previous structure restored | Continuous counter animation | Left/Right scroll animations | All buttons → 404.html");
+    </script>
+</body>
+</html>
